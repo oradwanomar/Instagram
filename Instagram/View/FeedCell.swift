@@ -70,7 +70,7 @@ class FeedCell : UICollectionViewCell {
     
     private let captionLabel : UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 12)
+        label.font = UIFont.systemFont(ofSize: 14)
         label.text = "test caption for now..."
         label.textColor = .label
         return label
@@ -126,6 +126,10 @@ class FeedCell : UICollectionViewCell {
         postImgView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true
         
         stackView.anchor(top:postImgView.bottomAnchor,width: 120,height: 50)
+        
+        likesLabel.anchor(top:stackView.bottomAnchor,left: leftAnchor,paddingTop: -4 ,paddingLeft: 8)
+        captionLabel.anchor(top:likesLabel.bottomAnchor,left: leftAnchor,paddingTop: 7,paddingLeft: 8)
+        postTimeLabel.anchor(top:captionLabel.bottomAnchor,left: leftAnchor,paddingTop: 7,paddingLeft: 8)
         
     }
     
