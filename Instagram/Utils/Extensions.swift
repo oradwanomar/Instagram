@@ -12,13 +12,6 @@ import UIKit
 extension UIViewController {
 //    static let hud = JGProgressHUD(style: .dark)
     
-    func configureGradientLayer() {
-        let gradient = CAGradientLayer()
-        gradient.colors = [UIColor.systemPurple.cgColor, UIColor.systemBlue.cgColor]
-        gradient.locations = [0, 1]
-        view.layer.addSublayer(gradient)
-        gradient.frame = view.frame
-    }
     
 //    func showLoader(_ show: Bool) {
 //        view.endEditing(true)
@@ -29,6 +22,14 @@ extension UIViewController {
 //            UIViewController.hud.dismiss()
 //        }
 //    }
+    
+    func configureGradientLayer() {
+        let gradient = CAGradientLayer()
+        gradient.colors = [UIColor.systemPurple.cgColor, UIColor.systemBlue.cgColor]
+        gradient.locations = [0, 1]
+        view.layer.addSublayer(gradient)
+        gradient.frame = view.frame
+    }
     
     func showMessage(withTitle title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
