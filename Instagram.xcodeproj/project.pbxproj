@@ -57,6 +57,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		85286B3828393D97007515CF /* Authantication */ = {
+			isa = PBXGroup;
+			children = (
+				853F8A46283828DD00DDBC0D /* LogInController.swift */,
+				853F8A482838292000DDBC0D /* SighUpController.swift */,
+			);
+			path = Authantication;
+			sourceTree = "<group>";
+		};
 		85C8F6A02835715700EE6E77 = {
 			isa = PBXGroup;
 			children = (
@@ -118,14 +127,13 @@
 		85C8F6C32835723100EE6E77 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				85286B3828393D97007515CF /* Authantication */,
 				85C8F6C62835732300EE6E77 /* MainTabBarController.swift */,
 				85C8F6C82835CBDD00EE6E77 /* FeedController.swift */,
 				85C8F6CA2835CBF500EE6E77 /* SearchController.swift */,
 				85C8F6CC2835CC0A00EE6E77 /* ImageSelectorController.swift */,
 				85C8F6CE2835CC1D00EE6E77 /* NotificationController.swift */,
 				85C8F6D02835CC3200EE6E77 /* ProfileController.swift */,
-				853F8A46283828DD00DDBC0D /* LogInController.swift */,
-				853F8A482838292000DDBC0D /* SighUpController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
