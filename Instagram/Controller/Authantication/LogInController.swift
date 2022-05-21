@@ -72,11 +72,7 @@ class LogInController : UIViewController {
         navigationController?.navigationBar.isHidden = true
         navigationController?.navigationBar.barStyle = .black
         
-        let gradient = CAGradientLayer()
-        gradient.colors = [UIColor.purple.cgColor,UIColor.systemBlue.cgColor]
-        gradient.locations = [0,1]
-        view.layer.addSublayer(gradient)
-        gradient.frame = view.frame
+        configureGradientLayer()
         
         view.addSubview(logoimage)
         [emailTextField,passwordTextField,loginBtn].forEach {stackView.addArrangedSubview($0)}
