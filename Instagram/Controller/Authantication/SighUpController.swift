@@ -16,6 +16,7 @@ class SighUpController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         
     }
     
