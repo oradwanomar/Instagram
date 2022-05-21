@@ -59,6 +59,38 @@ class LogInController : UIViewController {
         return btn
     }()
     
+    private let forgetPassword : UIButton = {
+        let Btn = UIButton(type: .system)
+        
+        let atts:[NSAttributedString.Key:Any]=[.foregroundColor:UIColor(white:1,alpha:0.6),.font:
+            UIFont.systemFont(ofSize:14)]
+        let attributedTitle=NSMutableAttributedString(string:"Forget your password? ",attributes:
+            atts)
+        let boldAtts:[NSAttributedString.Key:Any]=[.foregroundColor:UIColor(white:1,alpha:0.8),
+            .font:UIFont.boldSystemFont(ofSize:14)]
+        attributedTitle.append(NSAttributedString(string:"Get help signing in",attributes:boldAtts))
+        
+        Btn.setAttributedTitle(attributedTitle, for: .normal)
+        
+        return Btn
+    }()
+    
+    private let dontHaveAccount : UIButton = {
+        let Btn = UIButton(type: .system)
+        
+        let atts:[NSAttributedString.Key:Any]=[.foregroundColor:UIColor(white:1,alpha:0.6),.font:
+            UIFont.systemFont(ofSize:16)]
+        let attributedTitle=NSMutableAttributedString(string:"Don't have an account? ",attributes:
+            atts)
+        let boldAtts:[NSAttributedString.Key:Any]=[.foregroundColor:UIColor(white:1,alpha:0.8),
+            .font:UIFont.boldSystemFont(ofSize:16)]
+        attributedTitle.append(NSAttributedString(string:"Sign Up",attributes:boldAtts))
+        
+        Btn.setAttributedTitle(attributedTitle, for: .normal)
+        
+        return Btn
+    }()
+    
     
     //MARK: LifeCycle
     
@@ -84,6 +116,8 @@ class LogInController : UIViewController {
         view.addSubview(logoimage)
         [emailTextField,passwordTextField,loginBtn].forEach {stackView.addArrangedSubview($0)}
         view.addSubview(stackView)
+        view.addSubview(dontHaveAccount)
+        view.addSubview(forgetPassword)
     }
     
     func setUpConstrains(){
@@ -92,5 +126,11 @@ class LogInController : UIViewController {
         logoimage.anchor(top: view.safeAreaLayoutGuide.topAnchor,paddingTop: 32)
         
         stackView.anchor(top: logoimage.bottomAnchor, left: view.leftAnchor,right: view.rightAnchor, paddingTop: 32, paddingLeft: 32, paddingRight: 32)
+        
+        dontHaveAccount.centerX(inView: view)
+        dontHaveAccount.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
+        
+        forgetPassword.centerX(inView: view)
+        forgetPassword.anchor(top: stackView.bottomAnchor,paddingTop: 20)
     }
 }
