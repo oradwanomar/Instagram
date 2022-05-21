@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		85286B3A28394FBB007515CF /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85286B3928394FBB007515CF /* CustomTextField.swift */; };
 		853F8A47283828DD00DDBC0D /* LogInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853F8A46283828DD00DDBC0D /* LogInController.swift */; };
 		853F8A492838292000DDBC0D /* SighUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853F8A482838292000DDBC0D /* SighUpController.swift */; };
 		85C8F6AD2835715700EE6E77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C8F6AC2835715700EE6E77 /* AppDelegate.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		85286B3928394FBB007515CF /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		853F8A46283828DD00DDBC0D /* LogInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInController.swift; sourceTree = "<group>"; };
 		853F8A482838292000DDBC0D /* SighUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SighUpController.swift; sourceTree = "<group>"; };
 		85C8F6A92835715700EE6E77 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				85C8F6D2283612B800EE6E77 /* FeedCell.swift */,
+				85286B3928394FBB007515CF /* CustomTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85286B3A28394FBB007515CF /* CustomTextField.swift in Sources */,
 				85C8F6B12835715700EE6E77 /* ViewController.swift in Sources */,
 				853F8A47283828DD00DDBC0D /* LogInController.swift in Sources */,
 				85C8F6D3283612B800EE6E77 /* FeedCell.swift in Sources */,
