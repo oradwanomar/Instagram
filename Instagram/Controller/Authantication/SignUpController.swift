@@ -41,7 +41,12 @@ class SignUpController : UIViewController {
     
     private let signUpBtn = CustomAuthButton(title: "Sign Up")
     
-    
+    private let alreadyHaveAccount : UIButton = {
+        let Btn = UIButton(type: .system)
+        Btn.attributedTitle(firstPart: "Already have an account? ", secondPart: "Log In")
+        Btn.addTarget(self, action: #selector(goLogIn), for: .touchUpInside)
+        return Btn
+    }()
     
     
     //MARK: LifeCycle
@@ -60,6 +65,7 @@ class SignUpController : UIViewController {
         view.addSubview(plusPhotoButton)
         view.addSubview(stackView)
         [emailTextField,passwordTextField,FullNameTextField,UserNameTextField,signUpBtn].forEach {stackView.addArrangedSubview($0)}
+        view.addSubview(alreadyHaveAccount)
     }
     
     func setUpConstrains(){
@@ -69,5 +75,12 @@ class SignUpController : UIViewController {
         
         stackView.anchor(top: plusPhotoButton.bottomAnchor, left: view.leftAnchor,right: view.rightAnchor, paddingTop: 32, paddingLeft: 32, paddingRight: 32)
         
+        alreadyHaveAccount.centerX(inView: view)
+        alreadyHaveAccount.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
+        
+    }
+    
+    @objc func goLogIn(){
+        navigationController?.popViewController(animated: true)
     }
 }
