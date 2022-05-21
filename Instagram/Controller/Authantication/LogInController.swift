@@ -35,12 +35,7 @@ class LogInController : UIViewController {
     }()
     
     private let loginBtn : UIButton = {
-        let btn = UIButton(type: .system)
-        btn.setTitle("Log In", for: .normal)
-        btn.setTitleColor(.white, for: .normal)
-        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        btn.backgroundColor = .systemPurple.withAlphaComponent(0.3)
-        btn.setHeight(50)
+        let btn = CustomAuthButton(title: "Log In")
         return btn
     }()
     
@@ -53,6 +48,7 @@ class LogInController : UIViewController {
     private let dontHaveAccount : UIButton = {
         let Btn = UIButton(type: .system)
         Btn.attributedTitle(firstPart: "Don't have an account? ", secondPart: "Sign Up")
+        Btn.addTarget(self, action: #selector(goSignUp), for: .touchUpInside)
         return Btn
     }()
     
@@ -93,5 +89,10 @@ class LogInController : UIViewController {
         
         forgetPassword.centerX(inView: view)
         forgetPassword.anchor(top: stackView.bottomAnchor,paddingTop: 20)
+    }
+    
+    @objc func goSignUp(){
+        let signup = SignUpController()
+        navigationController?.pushViewController(signup, animated: true)
     }
 }
