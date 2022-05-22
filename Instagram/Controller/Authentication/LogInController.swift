@@ -19,6 +19,13 @@ class LogInController : UIViewController {
         return logoimage
     }()
     
+    private let stackView : UIStackView = {
+        let sv = UIStackView()
+        sv.axis = .vertical
+        sv.spacing = 20
+        return sv
+    }()
+    
     private let emailTextField : UITextField = {
         let emailTxt = CustomTextField(placeholder: "Email", keyboardtype: .emailAddress, issecure: false)
         return emailTxt
@@ -28,18 +35,6 @@ class LogInController : UIViewController {
         let passwordTxt = CustomTextField(placeholder: "Password", keyboardtype: .default, issecure: true)
         return passwordTxt
     }()
-    
-    private let stackView : UIStackView = {
-        let sv = UIStackView()
-        sv.axis = .vertical
-        sv.spacing = 20
-        return sv
-    }()
-    
-//    private let loginBtn : UIButton = {
-//        let btn = CustomAuthButton(title: "Log In")
-//        return btn
-//    }()
     
     private let loginBtn : UIButton = {
         let btn = UIButton(type: .system)
@@ -109,6 +104,8 @@ class LogInController : UIViewController {
         passwordTextField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
 
     }
+    
+    // MARK: OBJC Functions
     
     @objc func goSignUp(){
         let signup = SignUpController()

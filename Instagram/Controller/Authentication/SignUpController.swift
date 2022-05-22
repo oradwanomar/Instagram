@@ -17,6 +17,7 @@ class SignUpController : UIViewController {
         let ppBtn = UIButton(type: .system)
         ppBtn.setImage(UIImage(named: "plus_photo"), for: .normal)
         ppBtn.tintColor = .white
+        ppBtn.addTarget(self, action: #selector(getProfileImage), for: .touchUpInside)
         return ppBtn
     }()
     
@@ -118,6 +119,13 @@ class SignUpController : UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    @objc func getProfileImage(){
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker, animated: true, completion: nil)
+    }
+    
     
 }
 
@@ -128,5 +136,21 @@ extension SignUpController : FormViewModel {
         signUpBtn.backgroundColor = signupViewModel.buttonBackgroundColor
         signUpBtn.setTitleColor(signupViewModel.buttonTitleColor, for: .normal)
         signUpBtn.isEnabled = signupViewModel.formIsValid
+    }
+}
+
+// MARK: Extension to conform protocol UIImagePicker
+
+extension SignUpController : UIImagePickerControllerDelegate , UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        guard let selectedImage = info[.editedImage] as? UIImage else {return}
+        plusPhotoButton.layer.cornerRadius = plusPhotoButton.frame.width / 2
+        plusPhotoButton.layer.masksToBounds = true
+        plusPhotoButton.layer.borderColor = UIColor.black.cgColor
+        plusPhotoButton.layer.borderWidth = 1
+        plusPhotoButton.setImage(selectedImage.withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        self.dismiss(animated: true, completion: nil)
     }
 }
