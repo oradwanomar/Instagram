@@ -11,6 +11,8 @@ class SignUpController : UIViewController {
     
     //MARK: Properties
     
+    private var signupViewModel = SignUpViewModel()
+    
     private let plusPhotoButton : UIButton = {
         let ppBtn = UIButton(type: .system)
         ppBtn.setImage(UIImage(named: "plus_photo"), for: .normal)
@@ -39,7 +41,16 @@ class SignUpController : UIViewController {
     
     private let UserNameTextField = CustomTextField(placeholder: "Username", keyboardtype: .default, issecure: false)
     
-    private let signUpBtn = CustomAuthButton(title: "Sign Up")
+    private let signUpBtn : UIButton = {
+        let btn = UIButton(type: .system)
+            btn.setTitle("Sign Up", for: .normal)
+            btn.setTitleColor(UIColor(white: 1, alpha: 0.4), for: .normal)
+            btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+            btn.backgroundColor = .systemPurple.withAlphaComponent(0.5)
+            btn.isEnabled = false
+            btn.setHeight(50)
+        return btn
+    }()
     
     private let alreadyHaveAccount : UIButton = {
         let Btn = UIButton(type: .system)
@@ -56,7 +67,7 @@ class SignUpController : UIViewController {
         self.hideKeyboardWhenTappedAround()
         configureUI()
         setUpConstrains()
-        
+        configureTextFieldObserver()
     }
     
     func configureUI(){
@@ -80,7 +91,42 @@ class SignUpController : UIViewController {
         
     }
     
+    func configureTextFieldObserver() {
+        emailTextField.addTarget(self, action: #selector(didTextFieldChanged), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(didTextFieldChanged), for: .editingChanged)
+        FullNameTextField.addTarget(self, action: #selector(didTextFieldChanged), for: .editingChanged)
+        UserNameTextField.addTarget(self, action: #selector(didTextFieldChanged), for: .editingChanged)
+    }
+    
+    
+    // MARK: OBJC Functions
+    
+   @objc func didTextFieldChanged(sender:UITextField){
+        if sender == emailTextField {
+            signupViewModel.email = sender.text
+        }else if sender == passwordTextField {
+            signupViewModel.password = sender.text
+        }else if sender == FullNameTextField {
+            signupViewModel.fullname = sender.text
+        }else {
+            signupViewModel.username = sender.text
+        }
+        updateFormEffect()
+    }
+    
     @objc func goLogIn(){
         navigationController?.popViewController(animated: true)
+    }
+    
+    
+}
+
+// MARK: Extension to conform protocol FormViewModel
+
+extension SignUpController : FormViewModel {
+    func updateFormEffect() {
+        signUpBtn.backgroundColor = signupViewModel.buttonBackgroundColor
+        signUpBtn.setTitleColor(signupViewModel.buttonTitleColor, for: .normal)
+        signUpBtn.isEnabled = signupViewModel.formIsValid
     }
 }

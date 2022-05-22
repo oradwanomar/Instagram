@@ -121,10 +121,18 @@ class LogInController : UIViewController {
         }else {
             logInViewModel.password = sender.text
         }
+        updateFormEffect()
+    }
+    
+   
+}
+
+// MARK: Extension to conform protocol FormViewModel
+
+extension LogInController : FormViewModel {
+    func updateFormEffect() {
         loginBtn.backgroundColor = logInViewModel.buttonBackgroundColor
         loginBtn.setTitleColor(logInViewModel.buttonTitleColor, for: .normal)
         loginBtn.isEnabled = logInViewModel.formIsValid
     }
-    
-   
 }

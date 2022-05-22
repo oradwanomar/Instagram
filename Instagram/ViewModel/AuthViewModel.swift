@@ -7,7 +7,18 @@
 
 import UIKit
 
-class LoginViewModel {
+
+protocol FormViewModel {
+    func updateFormEffect()
+}
+
+protocol AuthViewModelProtocol {
+    var formIsValid : Bool {get}
+    var buttonBackgroundColor : UIColor {get}
+    var buttonTitleColor : UIColor {get}
+}
+
+struct LoginViewModel : AuthViewModelProtocol {
     var email : String?
     var password : String?
     
@@ -24,6 +35,24 @@ class LoginViewModel {
     }
 }
 
-class SignUpViewModel {
+struct SignUpViewModel : AuthViewModelProtocol {
+    var email : String?
+    var password : String?
+    var fullname : String?
+    var username : String?
+    
+    
+    var formIsValid: Bool {
+        return email?.isEmpty == false && password?.isEmpty == false && fullname?.isEmpty == false && username?.isEmpty == false
+    }
+    
+    var buttonBackgroundColor: UIColor {
+        return formIsValid ? .purple : .systemPurple.withAlphaComponent(0.5)
+    }
+    
+    var buttonTitleColor: UIColor {
+        return formIsValid ? .white : UIColor(white: 1, alpha: 0.4)
+    }
+    
     
 }
