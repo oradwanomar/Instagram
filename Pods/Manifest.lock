@@ -1,0 +1,38 @@
+PODS:
+  - ActiveLabel (1.1.0)
+  - JGProgressHUD (2.2)
+  - PryntTrimmerView (4.0.2)
+  - SDWebImage (5.12.2):
+    - SDWebImage/Core (= 5.12.2)
+  - SDWebImage/Core (5.12.2)
+  - SteviaLayout (4.7.3)
+  - YPImagePicker (5.2.1):
+    - PryntTrimmerView (= 4.0.2)
+    - SteviaLayout (= 4.7.3)
+
+DEPENDENCIES:
+  - ActiveLabel
+  - JGProgressHUD
+  - SDWebImage
+  - YPImagePicker
+
+SPEC REPOS:
+  trunk:
+    - ActiveLabel
+    - JGProgressHUD
+    - PryntTrimmerView
+    - SDWebImage
+    - SteviaLayout
+    - YPImagePicker
+
+SPEC CHECKSUMS:
+  ActiveLabel: 5e3f4de79a1952d4604b845a0610d4776e4b82b3
+  JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
+  PryntTrimmerView: 6a43cc90df5d99addeabd33d4ba09b1365322130
+  SDWebImage: 240e5c12b592fb1268c1d03b8c90d90e8c2ffe82
+  SteviaLayout: c2ecdcff57d44e38fd2f65e54ad52aeae28ca0c4
+  YPImagePicker: f36043210c10b0783034eb1947d6e06e31c461e4
+
+PODFILE CHECKSUM: 897ff042aa3549188420fc69e24de02c691dbb0c
+
+COCOAPODS: 1.11.3

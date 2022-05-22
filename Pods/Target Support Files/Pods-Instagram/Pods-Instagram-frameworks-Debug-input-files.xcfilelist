@@ -1,0 +1,7 @@
+${PODS_ROOT}/Target Support Files/Pods-Instagram/Pods-Instagram-frameworks.sh
+${BUILT_PRODUCTS_DIR}/ActiveLabel/ActiveLabel.framework
+${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework
+${BUILT_PRODUCTS_DIR}/PryntTrimmerView/PryntTrimmerView.framework
+${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
+${BUILT_PRODUCTS_DIR}/SteviaLayout/Stevia.framework
+${BUILT_PRODUCTS_DIR}/YPImagePicker/YPImagePicker.framework
