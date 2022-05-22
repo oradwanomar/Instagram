@@ -11,6 +11,8 @@ class LogInController : UIViewController {
     
     //MARK: Properties
     
+    private var logInViewModel = LoginViewModel()
+    
     private let logoimage : UIImageView = {
         let logoimage = UIImageView(image: UIImage(named: "Instagram_logo_white"))
         logoimage.contentMode = .scaleAspectFill
@@ -34,8 +36,19 @@ class LogInController : UIViewController {
         return sv
     }()
     
+//    private let loginBtn : UIButton = {
+//        let btn = CustomAuthButton(title: "Log In")
+//        return btn
+//    }()
+    
     private let loginBtn : UIButton = {
-        let btn = CustomAuthButton(title: "Log In")
+        let btn = UIButton(type: .system)
+        btn.setTitle("Log In", for: .normal)
+        btn.setTitleColor(UIColor(white: 1, alpha: 0.4), for: .normal)
+        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        btn.backgroundColor = .systemPurple.withAlphaComponent(0.5)
+        btn.isEnabled = false
+        btn.setHeight(50)
         return btn
     }()
     
@@ -60,7 +73,7 @@ class LogInController : UIViewController {
         self.hideKeyboardWhenTappedAround()
         configureUI()
         setUpConstrains()
-        
+        configureTextFieldObserver()
     }
     
     func configureUI(){
@@ -91,8 +104,27 @@ class LogInController : UIViewController {
         forgetPassword.anchor(top: stackView.bottomAnchor,paddingTop: 20)
     }
     
+    func configureTextFieldObserver(){
+        emailTextField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
+
+    }
+    
     @objc func goSignUp(){
         let signup = SignUpController()
         navigationController?.pushViewController(signup, animated: true)
     }
+    
+    @objc func textChanged(sender: UITextField){
+        if sender == emailTextField {
+            logInViewModel.email = sender.text
+        }else {
+            logInViewModel.password = sender.text
+        }
+        loginBtn.backgroundColor = logInViewModel.buttonBackgroundColor
+        loginBtn.setTitleColor(logInViewModel.buttonTitleColor, for: .normal)
+        loginBtn.isEnabled = logInViewModel.formIsValid
+    }
+    
+   
 }
