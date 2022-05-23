@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public protocol ActiveLabelDelegate: class {
+public protocol ActiveLabelDelegate: AnyObject {
     func didSelect(_ text: String, type: ActiveType)
 }
 
