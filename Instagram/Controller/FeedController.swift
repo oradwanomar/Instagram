@@ -27,6 +27,7 @@ class FeedController : UICollectionViewController {
         collectionView.register(FeedCell.self, forCellWithReuseIdentifier: identifier)
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
         navigationItem.leftBarButtonItem?.tintColor = .label
+        navigationItem.title = "Feed"
     }
     
     @objc func handleLogout(){

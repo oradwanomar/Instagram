@@ -149,9 +149,3 @@ extension UIViewController{
         view.endEditing(true)
     }
 }
-
-extension String {
-    var isValidEmail : Bool {
-        NSPredicate(format: "SELF MATCHES %@", "[A-Z0-9a-z._%+_]+@[A-Z0-9a-z.-]+\\.[A-Za-z]{2,0}").evaluate(with: self)
-    }
-}

@@ -23,7 +23,7 @@ struct LoginViewModel : AuthViewModelProtocol {
     var password : String?
     
     var formIsValid : Bool {
-        return email?.isEmpty == false && password?.isEmpty == false && email?.isValidEmail == true
+        return email?.isEmpty == false && password?.isEmpty == false
     }
     
     var buttonBackgroundColor : UIColor {
@@ -43,7 +43,7 @@ struct SignUpViewModel : AuthViewModelProtocol {
     
     
     var formIsValid: Bool {
-        return email?.isEmpty == false && password?.isEmpty == false && fullname?.isEmpty == false && username?.isEmpty == false && email?.isValidEmail == true
+        return email?.isEmpty == false && password?.isEmpty == false && fullname?.isEmpty == false && username?.isEmpty == false 
     }
     
     var buttonBackgroundColor: UIColor {
