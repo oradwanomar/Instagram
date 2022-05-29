@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MainTabBarController : UITabBarController {
     
@@ -14,9 +15,21 @@ class MainTabBarController : UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configueViewControllers()
+        checkIfUserLoggedIn()
     }
     
     // MARK: - Helpers
+    
+    func checkIfUserLoggedIn(){
+        let login = LogInController()
+        let logInNav = UINavigationController(rootViewController: login)
+        if Auth.auth().currentUser == nil {
+            DispatchQueue.main.async {
+                logInNav.modalPresentationStyle = .fullScreen
+                self.present(logInNav, animated: true, completion: nil)
+            }
+        }
+    }
     
     func configueViewControllers (){
         view.backgroundColor = .white

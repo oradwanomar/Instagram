@@ -117,7 +117,7 @@ class SignUpController : UIViewController {
                 print("Error : in user registeration \(error.localizedDescription)")
                 return
             }
-            print("Succesfully registration")
+            self.dismiss(animated: true, completion: nil)
         }
 
     }
