@@ -12,6 +12,8 @@ class SignUpController : UIViewController {
     //MARK: Properties
     
     private var signupViewModel = SignUpViewModel()
+    private var profileImage : UIImage?
+    
     
     private let plusPhotoButton : UIButton = {
         let ppBtn = UIButton(type: .system)
@@ -49,6 +51,7 @@ class SignUpController : UIViewController {
             btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
             btn.backgroundColor = .systemPurple.withAlphaComponent(0.5)
             btn.isEnabled = false
+        btn.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
             btn.setHeight(50)
         return btn
     }()
@@ -102,6 +105,17 @@ class SignUpController : UIViewController {
     
     // MARK: OBJC Functions
     
+    @objc func handleSignUp(){
+        guard let email = emailTextField.text else {return}
+        guard let password = passwordTextField.text else {return}
+        guard let fullname = FullNameTextField.text else {return}
+        guard let username = UserNameTextField.text else {return}
+        guard let pImage = self.profileImage else {return}
+        let user = AuthCredentials(email: email, password: password, fullname: fullname, username: username, profileImage: pImage)
+        AuthService.regesterUser(authcredential: user)
+
+    }
+    
    @objc func didTextFieldChanged(sender:UITextField){
         if sender == emailTextField {
             signupViewModel.email = sender.text
@@ -145,6 +159,7 @@ extension SignUpController : UIImagePickerControllerDelegate , UINavigationContr
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         guard let selectedImage = info[.editedImage] as? UIImage else {return}
+        profileImage = selectedImage
         plusPhotoButton.layer.cornerRadius = plusPhotoButton.frame.width / 2
         plusPhotoButton.layer.masksToBounds = true
         plusPhotoButton.layer.borderColor = UIColor.black.cgColor
