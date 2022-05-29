@@ -25,6 +25,19 @@ class ProfileHeader : UICollectionReusableView {
         return name
     }()
     
+    private lazy var editProfileFollowBtn : UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setTitle("Edit Profile", for: .normal)
+        btn.layer.cornerRadius = 3
+        btn.layer.borderColor = UIColor.lightGray.cgColor
+        btn.layer.borderWidth = 0.4
+        btn.backgroundColor = .systemBackground
+        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        btn.setTitleColor(.label, for: .normal)
+        btn.addTarget(self, action: #selector(handleEditProfileFollowTap), for: .touchUpInside)
+        return btn
+    }()
+    
     //MARK: LifeCycle
     
     override init(frame:CGRect){
@@ -43,6 +56,7 @@ class ProfileHeader : UICollectionReusableView {
     func configureProfileHeader(){
         addSubview(profileImageView)
         addSubview(nameUser)
+        addSubview(editProfileFollowBtn)
     }
     
     func setUpConstrains(){
@@ -51,6 +65,9 @@ class ProfileHeader : UICollectionReusableView {
         profileImageView.layer.cornerRadius = 40
         
         nameUser.anchor(top:profileImageView.bottomAnchor,left: leftAnchor,paddingTop: 12,paddingLeft: 12)
-
+        
+        editProfileFollowBtn.anchor(top:nameUser.bottomAnchor,left:leftAnchor,right: rightAnchor,paddingTop: 16,paddingLeft: 24,paddingRight: 24)
     }
+    
+    @objc func handleEditProfileFollowTap(){}
 }
