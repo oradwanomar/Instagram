@@ -109,10 +109,16 @@ class SignUpController : UIViewController {
         guard let email = emailTextField.text else {return}
         guard let password = passwordTextField.text else {return}
         guard let fullname = FullNameTextField.text else {return}
-        guard let username = UserNameTextField.text else {return}
+        guard let username = UserNameTextField.text?.lowercased() else {return}
         guard let pImage = self.profileImage else {return}
         let user = AuthCredentials(email: email, password: password, fullname: fullname, username: username, profileImage: pImage)
-        AuthService.regesterUser(authcredential: user)
+        AuthService.regesterUser(authcredential: user) { error in
+            if let error = error {
+                print("Error : in user registeration \(error.localizedDescription)")
+                return
+            }
+            print("Succesfully registration")
+        }
 
     }
     
