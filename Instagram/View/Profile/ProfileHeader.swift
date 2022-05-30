@@ -38,6 +38,8 @@ class ProfileHeader : UICollectionReusableView {
         return btn
     }()
     
+    
+    
     //MARK: LifeCycle
     
     override init(frame:CGRect){
