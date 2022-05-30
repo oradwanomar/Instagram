@@ -30,10 +30,10 @@ class ProfileHeaderViewModel {
     }
     
     init() {
-        self.fetchUser()
+        self.fetchUserFromAPI()
     }
     
-    func fetchUser(){
+    func fetchUserFromAPI(){
         UserService.fetchUser { user in
                 self.user = user
         }

@@ -20,7 +20,7 @@ class ProfileController : UICollectionViewController {
         configureCollectionVIew()
         fetchUser()
         profileHeaderViewModel.bindingUserViewModelToView = {
-            self.fetchUser()
+            self.fetchUserFromAPI()
         }
     }
     
