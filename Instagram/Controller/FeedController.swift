@@ -42,8 +42,7 @@ class FeedController : UICollectionViewController {
                 }
             }
         } catch {
-            print("Error : in logout functionality")
-            
+            print("Error : in logout")
         }
     }
     
