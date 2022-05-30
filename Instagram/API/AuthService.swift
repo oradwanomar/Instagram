@@ -9,15 +9,8 @@ import Foundation
 import UIKit
 import Firebase
 
-struct AuthCredentials {
-    let email : String
-    let password : String
-    let fullname : String
-    let username : String
-    let profileImage : UIImage
-}
-
 struct AuthService {
+    
     static func logInUser(withEmail email:String,withPassword password:String,completion:@escaping(AuthDataResult?, Error?) -> Void ){
         Auth.auth().signIn(withEmail: email, password: password, completion: completion)
     }
@@ -37,7 +30,7 @@ struct AuthService {
                     "uid":uid,
                     "username":authcredential.username
                 ]
-                Firestore.firestore().collection("users").document(uid).setData(userData, completion: completion)
+                COLLECTION_USERS.document(uid).setData(userData, completion: completion)
             }
         }
     }

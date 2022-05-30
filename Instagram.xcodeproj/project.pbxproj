@@ -43,6 +43,10 @@
 		85286B7B283A00CB007515CF /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85286B7A283A00CB007515CF /* AuthService.swift */; };
 		853F8A47283828DD00DDBC0D /* LogInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853F8A46283828DD00DDBC0D /* LogInController.swift */; };
 		853F8A492838292000DDBC0D /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853F8A482838292000DDBC0D /* SignUpController.swift */; };
+		85A5687F28448F5F004F50BF /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A5687E28448F5F004F50BF /* Constans.swift */; };
+		85A5688128448FD8004F50BF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A5688028448FD8004F50BF /* User.swift */; };
+		85A5688328448FF4004F50BF /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A5688228448FF4004F50BF /* UserService.swift */; };
+		85A5688528449668004F50BF /* AuthCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A5688428449668004F50BF /* AuthCredentials.swift */; };
 		85B14A58284358E9002C1D3A /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B14A57284358E8002C1D3A /* ProfileCell.swift */; };
 		85B14A5A284358F5002C1D3A /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B14A59284358F5002C1D3A /* ProfileHeader.swift */; };
 		85C8F6AD2835715700EE6E77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C8F6AC2835715700EE6E77 /* AppDelegate.swift */; };
@@ -71,6 +75,10 @@
 		85286B7A283A00CB007515CF /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		853F8A46283828DD00DDBC0D /* LogInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInController.swift; sourceTree = "<group>"; };
 		853F8A482838292000DDBC0D /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		85A5687E28448F5F004F50BF /* Constans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constans.swift; sourceTree = "<group>"; };
+		85A5688028448FD8004F50BF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		85A5688228448FF4004F50BF /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		85A5688428449668004F50BF /* AuthCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCredentials.swift; sourceTree = "<group>"; };
 		85B14A57284358E8002C1D3A /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		85B14A59284358F5002C1D3A /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		85C8F6A92835715700EE6E77 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -201,6 +209,8 @@
 		85C8F6C02835721800EE6E77 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				85A5688028448FD8004F50BF /* User.swift */,
+				85A5688428449668004F50BF /* AuthCredentials.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -243,6 +253,7 @@
 			children = (
 				85286B78283A00B9007515CF /* ImageUploader.swift */,
 				85286B7A283A00CB007515CF /* AuthService.swift */,
+				85A5688228448FF4004F50BF /* UserService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -251,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				85C8F6D42836137C00EE6E77 /* Extensions.swift */,
+				85A5687E28448F5F004F50BF /* Constans.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -416,14 +428,18 @@
 				85286B79283A00B9007515CF /* ImageUploader.swift in Sources */,
 				85286B7B283A00CB007515CF /* AuthService.swift in Sources */,
 				85C8F6B12835715700EE6E77 /* ViewController.swift in Sources */,
+				85A5687F28448F5F004F50BF /* Constans.swift in Sources */,
 				853F8A47283828DD00DDBC0D /* LogInController.swift in Sources */,
+				85A5688328448FF4004F50BF /* UserService.swift in Sources */,
 				85286B3E2839B2B2007515CF /* AuthViewModel.swift in Sources */,
 				85C8F6D3283612B800EE6E77 /* FeedCell.swift in Sources */,
 				85B14A5A284358F5002C1D3A /* ProfileHeader.swift in Sources */,
+				85A5688128448FD8004F50BF /* User.swift in Sources */,
 				85C8F6CD2835CC0A00EE6E77 /* ImageSelectorController.swift in Sources */,
 				85C8F6CF2835CC1D00EE6E77 /* NotificationController.swift in Sources */,
 				85C8F6CB2835CBF500EE6E77 /* SearchController.swift in Sources */,
 				85C8F6AD2835715700EE6E77 /* AppDelegate.swift in Sources */,
+				85A5688528449668004F50BF /* AuthCredentials.swift in Sources */,
 				853F8A492838292000DDBC0D /* SignUpController.swift in Sources */,
 				85C8F6D12835CC3200EE6E77 /* ProfileController.swift in Sources */,
 				85C8F6C92835CBDE00EE6E77 /* FeedController.swift in Sources */,

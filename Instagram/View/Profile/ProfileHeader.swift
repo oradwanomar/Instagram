@@ -62,6 +62,26 @@ class ProfileHeader : UICollectionReusableView {
         return plabel
     }()
     
+    let gridButton : UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setImage(UIImage(named: "grid"), for: .normal)
+        return btn
+    }()
+    
+    let listButton : UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setImage(UIImage(named: "list"), for: .normal)
+        btn.tintColor = UIColor(white: 0, alpha: 0.2)
+        return btn
+    }()
+    
+    let bookMarkButton : UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setImage(UIImage(named: "ribbon"), for: .normal)
+        btn.tintColor = UIColor(white: 0, alpha: 0.2)
+        return btn
+    }()
+    
     //MARK: LifeCycle
     
     override init(frame:CGRect){
@@ -84,8 +104,28 @@ class ProfileHeader : UICollectionReusableView {
         let stackView = UIStackView(arrangedSubviews: [postsLabel,followersLabel,followingLabel])
         stackView.distribution = .fillEqually
         addSubview(stackView)
-        stackView.centerX(inView: profileImageView)
+        stackView.centerY(inView: profileImageView)
         stackView.anchor(left:profileImageView.rightAnchor,right: rightAnchor,paddingLeft: 12,paddingRight: 12,height: 50)
+        
+        let topDivider = UIView()
+        topDivider.backgroundColor = .lightGray
+        
+        let bottomDivider = UIView()
+        bottomDivider.backgroundColor = .lightGray
+        
+        let buttonsStack = UIStackView(arrangedSubviews: [gridButton,listButton,bookMarkButton])
+        buttonsStack.distribution = .fillEqually
+        
+        addSubview(topDivider)
+        addSubview(bottomDivider)
+        addSubview(buttonsStack)
+        
+        buttonsStack.anchor(left:leftAnchor,bottom: bottomAnchor,right: rightAnchor,height: 50)
+        
+        topDivider.anchor(top:buttonsStack.topAnchor,left:leftAnchor,right: rightAnchor,height: 0.5)
+        
+        bottomDivider.anchor(top:buttonsStack.bottomAnchor,left:leftAnchor,right: rightAnchor,height: 0.5)
+        
     }
     
     func setUpConstrains(){
@@ -100,7 +140,7 @@ class ProfileHeader : UICollectionReusableView {
     }
     
     func setProfileAttributedTexts(value : Int,label : String) -> NSAttributedString {
-        let attributedText = NSMutableAttributedString(string: "\(value)", attributes: [.font : UIFont.boldSystemFont(ofSize: 14)])
+        let attributedText = NSMutableAttributedString(string: "\(value)\n", attributes: [.font : UIFont.boldSystemFont(ofSize: 14)])
         attributedText.append(NSAttributedString(string: label, attributes: [.font:UIFont.boldSystemFont(ofSize: 14),.foregroundColor:UIColor.lightGray]))
         return attributedText
     }

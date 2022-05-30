@@ -11,15 +11,28 @@ private let profileIdentifier = "profileCell"
 private let headerIdentifier = "profileHeader"
 class ProfileController : UICollectionViewController {
     
+    var user : User? {
+        didSet {
+            navigationItem.title = user?.username
+        }
+    }
+    
     
     //MARK: LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionVIew()
+        fetchUser()
     }
     
     // MARK: Helper
+    
+    func fetchUser(){
+        UserService.fetchUser { user in
+            self.user = user
+        }
+    }
     
     func configureCollectionVIew(){
         collectionView.backgroundColor = .systemBackground
