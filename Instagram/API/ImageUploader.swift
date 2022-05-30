@@ -21,6 +21,7 @@ struct ImageUploader {
             ref.downloadURL { url, error in
                 guard let imageUrl = url?.absoluteString else {return}
                 completion(imageUrl)
+                
             }
         }
         
