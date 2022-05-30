@@ -38,7 +38,26 @@ class ProfileHeader : UICollectionReusableView {
         return btn
     }()
     
+    private let postsLabel : UILabel = {
+        let plabel = UILabel()
+        plabel.numberOfLines = 0
+        plabel.textAlignment = .center
+        return plabel
+    }()
     
+    private let followersLabel : UILabel = {
+        let plabel = UILabel()
+        plabel.numberOfLines = 0
+        plabel.textAlignment = .center
+        return plabel
+    }()
+    
+    private let followingLabel : UILabel = {
+        let plabel = UILabel()
+        plabel.numberOfLines = 0
+        plabel.textAlignment = .center
+        return plabel
+    }()
     
     //MARK: LifeCycle
     
@@ -69,6 +88,12 @@ class ProfileHeader : UICollectionReusableView {
         nameUser.anchor(top:profileImageView.bottomAnchor,left: leftAnchor,paddingTop: 12,paddingLeft: 12)
         
         editProfileFollowBtn.anchor(top:nameUser.bottomAnchor,left:leftAnchor,right: rightAnchor,paddingTop: 16,paddingLeft: 24,paddingRight: 24)
+    }
+    
+    func setProfileAttributedTexts(value : Int,label : String) -> NSAttributedString {
+        let attributedText = NSMutableAttributedString(string: "\(value)", attributes: [.font : UIFont.boldSystemFont(ofSize: 14)])
+        attributedText.append(NSAttributedString(string: label, attributes: [.font:UIFont.boldSystemFont(ofSize: 14),.foregroundColor:UIColor.lightGray]))
+        return attributedText
     }
     
     @objc func handleEditProfileFollowTap(){}
