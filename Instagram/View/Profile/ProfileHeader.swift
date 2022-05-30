@@ -38,24 +38,27 @@ class ProfileHeader : UICollectionReusableView {
         return btn
     }()
     
-    private let postsLabel : UILabel = {
+    private lazy var postsLabel : UILabel = {
         let plabel = UILabel()
         plabel.numberOfLines = 0
         plabel.textAlignment = .center
+        plabel.attributedText = setProfileAttributedTexts(value: 23, label: "Posts")
         return plabel
     }()
     
-    private let followersLabel : UILabel = {
+    private lazy var followersLabel : UILabel = {
         let plabel = UILabel()
         plabel.numberOfLines = 0
         plabel.textAlignment = .center
+        plabel.attributedText = setProfileAttributedTexts(value: 8, label: "Followers")
         return plabel
     }()
     
-    private let followingLabel : UILabel = {
+    private lazy var followingLabel : UILabel = {
         let plabel = UILabel()
         plabel.numberOfLines = 0
         plabel.textAlignment = .center
+        plabel.attributedText = setProfileAttributedTexts(value: 9, label: "Following")
         return plabel
     }()
     
@@ -78,6 +81,11 @@ class ProfileHeader : UICollectionReusableView {
         addSubview(profileImageView)
         addSubview(nameUser)
         addSubview(editProfileFollowBtn)
+        let stackView = UIStackView(arrangedSubviews: [postsLabel,followersLabel,followingLabel])
+        stackView.distribution = .fillEqually
+        addSubview(stackView)
+        stackView.centerX(inView: profileImageView)
+        stackView.anchor(left:profileImageView.rightAnchor,right: rightAnchor,paddingLeft: 12,paddingRight: 12,height: 50)
     }
     
     func setUpConstrains(){
@@ -88,6 +96,7 @@ class ProfileHeader : UICollectionReusableView {
         nameUser.anchor(top:profileImageView.bottomAnchor,left: leftAnchor,paddingTop: 12,paddingLeft: 12)
         
         editProfileFollowBtn.anchor(top:nameUser.bottomAnchor,left:leftAnchor,right: rightAnchor,paddingTop: 16,paddingLeft: 24,paddingRight: 24)
+        
     }
     
     func setProfileAttributedTexts(value : Int,label : String) -> NSAttributedString {
