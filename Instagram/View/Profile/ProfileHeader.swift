@@ -6,22 +6,30 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ProfileHeader : UICollectionReusableView {
     
     //MARK: Properties
+    var phViewModel : ProfileHeaderViewModel? {
+        didSet {
+            profileImageView.sd_setImage(with: phViewModel?.profileImageUrl, completed: nil)
+            nameUser.text = phViewModel?.fullname
+        }
+    }
+    
+    
     private let profileImageView : UIImageView = {
         let piv = UIImageView()
-        piv.image = UIImage(named: "venom")
         piv.contentMode = .scaleAspectFill
         piv.clipsToBounds = true
+        piv.backgroundColor = .lightGray
         return piv
     }()
     
     private let nameUser : UILabel = {
         let name = UILabel()
         name.font = UIFont.boldSystemFont(ofSize: 14)
-        name.text = "Omar Radwan"
         return name
     }()
     

@@ -5,7 +5,7 @@
 //  Created by Omar Ahmed on 30/05/2022.
 //
 
-import Foundation
+import UIKit
 
 struct AuthCredentials {
     let email : String
