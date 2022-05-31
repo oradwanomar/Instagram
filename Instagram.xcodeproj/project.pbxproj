@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5A4C8E04DE4001F8AEABDFE7 /* Pods_Instagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A426E0267A15871170EB4C21 /* Pods_Instagram.framework */; };
+		8511BDFD2845E81A00157CC3 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8511BDFC2845E81A00157CC3 /* UserCell.swift */; };
 		85286B3A28394FBB007515CF /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85286B3928394FBB007515CF /* CustomTextField.swift */; };
 		85286B3C2839999B007515CF /* CustomAuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85286B3B2839999B007515CF /* CustomAuthButton.swift */; };
 		85286B3E2839B2B2007515CF /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85286B3D2839B2B2007515CF /* AuthViewModel.swift */; };
@@ -68,6 +69,7 @@
 
 /* Begin PBXFileReference section */
 		007645438F726A553B86AA18 /* Pods-Instagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram.debug.xcconfig"; path = "Target Support Files/Pods-Instagram/Pods-Instagram.debug.xcconfig"; sourceTree = "<group>"; };
+		8511BDFC2845E81A00157CC3 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		85286B3928394FBB007515CF /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		85286B3B2839999B007515CF /* CustomAuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAuthButton.swift; sourceTree = "<group>"; };
 		85286B3D2839B2B2007515CF /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				85C8F6D2283612B800EE6E77 /* FeedCell.swift */,
 				85286B3928394FBB007515CF /* CustomTextField.swift */,
 				85286B3B2839999B007515CF /* CustomAuthButton.swift */,
+				8511BDFC2845E81A00157CC3 /* UserCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -440,6 +443,7 @@
 				85B14A5A284358F5002C1D3A /* ProfileHeader.swift in Sources */,
 				85A5688128448FD8004F50BF /* User.swift in Sources */,
 				85C8F6CD2835CC0A00EE6E77 /* ImageSelectorController.swift in Sources */,
+				8511BDFD2845E81A00157CC3 /* UserCell.swift in Sources */,
 				85C8F6CF2835CC1D00EE6E77 /* NotificationController.swift in Sources */,
 				85C8F6CB2835CBF500EE6E77 /* SearchController.swift in Sources */,
 				85C8F6AD2835715700EE6E77 /* AppDelegate.swift in Sources */,
