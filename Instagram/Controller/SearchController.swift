@@ -6,17 +6,24 @@
 //
 
 import UIKit
+import Firebase
 
 private let reuseIdentifier = "usercell"
 class SearchController : UITableViewController {
     
     var users : [User] = []
+    let pvm = ProfileHeaderViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
+        fetchUsers()
+    }
+    
+    func fetchUsers(){
         UserService.fetchUsers { users in
-            self.users = users
+            let filterd = users.filter {$0.username != self.pvm.username}
+            self.users = filterd
             self.tableView.reloadData()
         }
     }

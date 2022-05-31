@@ -141,7 +141,7 @@ class ProfileHeader : UICollectionReusableView {
         profileImageView.setDimensions(height: 80, width: 80)
         profileImageView.layer.cornerRadius = 40
         
-        nameUser.anchor(top:profileImageView.bottomAnchor,left: leftAnchor,paddingTop: 12,paddingLeft: 12)
+        nameUser.anchor(top:profileImageView.bottomAnchor,left: leftAnchor,paddingTop: 12,paddingLeft: 24)
         
         editProfileFollowBtn.anchor(top:nameUser.bottomAnchor,left:leftAnchor,right: rightAnchor,paddingTop: 16,paddingLeft: 24,paddingRight: 24)
         
