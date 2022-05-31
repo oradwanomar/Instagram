@@ -10,9 +10,15 @@ import UIKit
 private let reuseIdentifier = "usercell"
 class SearchController : UITableViewController {
     
+    var users : [User] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
+        UserService.fetchUsers { users in
+            self.users = users
+            self.tableView.reloadData()
+        }
     }
     
     func configureTableView(){
@@ -25,11 +31,12 @@ class SearchController : UITableViewController {
 extension SearchController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return users.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! UserCell
+        cell.user = users[indexPath.row]
         return cell
     }
     

@@ -6,8 +6,17 @@
 //
 
 import UIKit
+import SDWebImage
 
 class UserCell : UITableViewCell {
+    
+    var user : User? {
+        didSet {
+            profileimgView.sd_setImage(with: URL(string: user!.profileImageUrl), completed: nil)
+            usernameLabel.text = user?.username
+            fullnameLabel.text = user?.fullname
+        }
+    }
     
     //MARK: Properities
     
@@ -16,7 +25,6 @@ class UserCell : UITableViewCell {
         piv.contentMode = .scaleAspectFill
         piv.clipsToBounds = true
         piv.backgroundColor = .lightGray
-        piv.image = UIImage(named: "venom")
         return piv
     }()
     
@@ -24,7 +32,6 @@ class UserCell : UITableViewCell {
         let namelabel = UILabel()
         namelabel.font = UIFont.boldSystemFont(ofSize: 14)
         namelabel.tintColor = .label
-        namelabel.text = "omarradwan"
         return namelabel
     }()
     
@@ -32,7 +39,6 @@ class UserCell : UITableViewCell {
         let namelabel = UILabel()
         namelabel.font = UIFont.systemFont(ofSize: 13)
         namelabel.textColor = .lightGray
-        namelabel.text = "Omar Radwan"
         return namelabel
     }()
     
