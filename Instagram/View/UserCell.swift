@@ -30,8 +30,8 @@ class UserCell : UITableViewCell {
     
     private let fullnameLabel : UILabel = {
         let namelabel = UILabel()
-        namelabel.font = UIFont.boldSystemFont(ofSize: 14)
-        namelabel.tintColor = .lightGray
+        namelabel.font = UIFont.systemFont(ofSize: 13)
+        namelabel.textColor = .lightGray
         namelabel.text = "Omar Radwan"
         return namelabel
     }()
@@ -51,12 +51,22 @@ class UserCell : UITableViewCell {
     // MARK: Functions
     
     func configureUserCell(){
+        backgroundColor = .systemBackground
         addSubview(profileimgView)
+        
+        let stack = UIStackView(arrangedSubviews: [usernameLabel,fullnameLabel])
+        stack.axis = .vertical
+        stack.spacing = 4
+        stack.alignment = .leading
+        addSubview(stack)
+        
+        stack.centerY(inView: profileimgView, leftAnchor: profileimgView.rightAnchor, paddingLeft: 8)
+        
     }
     
     func setUpConstrains(){
-        profileimgView.setDimensions(height: 50, width: 50)
-        profileimgView.layer.cornerRadius = 50 / 2
+        profileimgView.setDimensions(height: 48, width: 48)
+        profileimgView.layer.cornerRadius = 48 / 2
         profileimgView.centerY(inView: self, leftAnchor: leftAnchor, paddingLeft: 12)
     }
     
