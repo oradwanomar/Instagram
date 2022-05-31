@@ -12,6 +12,8 @@ class MainTabBarController : UITabBarController {
     
     // MARK: - LifeCycle
     
+    var profileViewModel = ProfileHeaderViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configueViewControllers()
@@ -22,6 +24,7 @@ class MainTabBarController : UITabBarController {
     
     func checkIfUserLoggedIn(){
         let login = LogInController()
+        login.delegate = self
         let logInNav = UINavigationController(rootViewController: login)
         if Auth.auth().currentUser == nil {
             DispatchQueue.main.async {
@@ -41,7 +44,7 @@ class MainTabBarController : UITabBarController {
         
         let notification = templatesNavigationControllers(selectedImage: UIImage(named: "like_selected")!, unselectedImage: UIImage(named: "like_unselected")!, rootViewController: NotificationController())
         
-        let profile = templatesNavigationControllers(selectedImage: UIImage(named: "profile_selected")!, unselectedImage: UIImage(named: "profile_unselected")!, rootViewController: ProfileController(collectionViewLayout: UICollectionViewFlowLayout()))
+        let profile = templatesNavigationControllers(selectedImage: UIImage(named: "profile_selected")!, unselectedImage: UIImage(named: "profile_unselected")!, rootViewController: ProfileController(viewModel: profileViewModel))
         
         viewControllers = [feed,search,imageSelector,notification,profile]
         
@@ -56,5 +59,11 @@ class MainTabBarController : UITabBarController {
         nav.navigationBar.tintColor = .systemBackground
         
         return nav
+    }
+}
+extension MainTabBarController : AuthDelegate {
+    func authDidCompleted() {
+        profileViewModel.fetchUserFromAPI()
+        self.dismiss(animated: true, completion: nil)
     }
 }

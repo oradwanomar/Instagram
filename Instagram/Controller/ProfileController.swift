@@ -15,12 +15,21 @@ class ProfileController : UICollectionViewController {
     
     //MARK: LifeCycle
     
+    init(viewModel:ProfileHeaderViewModel){
+        self.profileHeaderViewModel = viewModel
+        super.init(collectionViewLayout: UICollectionViewFlowLayout())
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionVIew()
         fetchUser()
         profileHeaderViewModel.bindingUserViewModelToView = {
-            self.fetchUserFromAPI()
+            self.fetchUser()
         }
     }
     

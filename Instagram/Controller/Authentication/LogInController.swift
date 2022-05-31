@@ -7,11 +7,16 @@
 
 import UIKit
 
+protocol AuthDelegate {
+    func authDidCompleted()
+}
+
 class LogInController : UIViewController {
     
     //MARK: Properties
     
     private var logInViewModel = LoginViewModel()
+    var delegate : AuthDelegate?
     
     private let logoimage : UIImageView = {
         let logoimage = UIImageView(image: UIImage(named: "Instagram_logo_white"))
@@ -116,7 +121,7 @@ class LogInController : UIViewController {
                 print("Error : in log in \(error.localizedDescription)")
                 return
             }
-            self.dismiss(animated: true, completion: nil)
+            self.delegate?.authDidCompleted()
         }
     }
     

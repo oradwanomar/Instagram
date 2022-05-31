@@ -33,14 +33,13 @@ class FeedController : UICollectionViewController {
     @objc func handleLogout(){
         do {
             try Auth.auth().signOut()
-            let login = LogInController()
-            let logInNav = UINavigationController(rootViewController: login)
-            if Auth.auth().currentUser == nil {
                 DispatchQueue.main.async {
+                    let login = LogInController()
+                    login.delegate = self.tabBarController as? MainTabBarController
+                    let logInNav = UINavigationController(rootViewController: login)
                     logInNav.modalPresentationStyle = .fullScreen
                     self.present(logInNav, animated: true, completion: nil)
                 }
-            }
         } catch {
             print("Error : in logout")
         }
