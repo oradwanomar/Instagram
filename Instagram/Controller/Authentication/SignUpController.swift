@@ -119,7 +119,7 @@ class SignUpController : UIViewController {
                 return
             }
             self.signUpDelegate?.authDidCompleted()
-
+            self.dismiss(animated: true, completion: nil)
         }
 
     }
