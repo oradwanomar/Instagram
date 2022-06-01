@@ -13,6 +13,7 @@ class SignUpController : UIViewController {
     
     private var signupViewModel = SignUpViewModel()
     private var profileImage : UIImage?
+    var signUpDelegate : AuthDelegate?
     
     
     private let plusPhotoButton : UIButton = {
@@ -117,6 +118,7 @@ class SignUpController : UIViewController {
                 print("Error : in user registeration \(error.localizedDescription)")
                 return
             }
+            self.signUpDelegate?.authDidCompleted()
             self.dismiss(animated: true, completion: nil)
         }
 
