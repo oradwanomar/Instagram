@@ -138,8 +138,6 @@ class LogInController : UIViewController {
         updateFormEffect()
     }
     
-    
-    
    
 }
 
