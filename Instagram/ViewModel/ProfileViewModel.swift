@@ -8,13 +8,14 @@
 import Foundation
 
 
-class ProfileHeaderViewModel {
-    var user: User! {
+class ProfileViewModel {
+    var user: User!
+    {
         didSet {
-            self.bindingUserViewModelToView()
+            self.fetchUserFromAPI()
         }
     }
-    
+
     var bindingUserViewModelToView : (()->()) = {}
     
     var username : String {
@@ -38,6 +39,5 @@ class ProfileHeaderViewModel {
                 self.user = user
         }
     }
-    
     
 }

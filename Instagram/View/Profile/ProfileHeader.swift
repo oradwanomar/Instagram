@@ -11,10 +11,15 @@ import SDWebImage
 class ProfileHeader : UICollectionReusableView {
     
     //MARK: Properties
-    var phViewModel : ProfileHeaderViewModel? {
+//    var phViewModel : ProfileViewModel? {
+//
+//    }
+    
+    var user : User? {
         didSet {
-            profileImageView.sd_setImage(with: phViewModel?.profileImageUrl, completed: nil)
-            nameUser.text = phViewModel?.fullname
+            guard let user = user else {return}
+            profileImageView.sd_setImage(with: URL(string: user.profileImageUrl), completed: nil)
+            nameUser.text = user.fullname
         }
     }
     

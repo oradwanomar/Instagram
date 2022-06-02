@@ -10,11 +10,12 @@ import SDWebImage
 
 class UserCell : UITableViewCell {
     
-    var user : User? {
+    var userViewModel : UserViewModel? {
         didSet {
-            profileimgView.sd_setImage(with: URL(string: user!.profileImageUrl), completed: nil)
-            usernameLabel.text = user?.username
-            fullnameLabel.text = user?.fullname
+            guard let userViewModel = userViewModel else {return}
+            profileimgView.sd_setImage(with: userViewModel.profileImageUrl, completed: nil)
+            usernameLabel.text = userViewModel.username
+            fullnameLabel.text = userViewModel.fullname
         }
     }
     

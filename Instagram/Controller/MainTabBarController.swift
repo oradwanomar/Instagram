@@ -12,12 +12,20 @@ class MainTabBarController : UITabBarController {
     
     // MARK: - LifeCycle
     
-    var profileViewModel = ProfileHeaderViewModel()
+//    var profileViewModel = ProfileViewModel()
+    var user : User? {
+        didSet {
+            guard let user = user else {return}
+            configueViewControllers(withUser: user)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configueViewControllers()
         checkIfUserLoggedIn()
+        UserService.fetchUser { user in
+            self.user = user
+        }
     }
     
     // MARK: - Helpers
@@ -34,7 +42,7 @@ class MainTabBarController : UITabBarController {
         }
     }
     
-    func configueViewControllers (){
+    func configueViewControllers (withUser user : User){
         view.backgroundColor = .white
         let feed = templatesNavigationControllers(selectedImage: UIImage(named: "home_selected")!, unselectedImage: UIImage(named: "home_unselected")!, rootViewController: FeedController(collectionViewLayout: UICollectionViewFlowLayout()))
         
@@ -44,7 +52,7 @@ class MainTabBarController : UITabBarController {
         
         let notification = templatesNavigationControllers(selectedImage: UIImage(named: "like_selected")!, unselectedImage: UIImage(named: "like_unselected")!, rootViewController: NotificationController())
         
-        let profile = templatesNavigationControllers(selectedImage: UIImage(named: "profile_selected")!, unselectedImage: UIImage(named: "profile_unselected")!, rootViewController: ProfileController(viewModel: profileViewModel))
+        let profile = templatesNavigationControllers(selectedImage: UIImage(named: "profile_selected")!, unselectedImage: UIImage(named: "profile_unselected")!, rootViewController: ProfileController(user: user))
         
         viewControllers = [feed,search,imageSelector,notification,profile]
         
@@ -56,14 +64,17 @@ class MainTabBarController : UITabBarController {
         let nav = UINavigationController(rootViewController: rootViewController)
         nav.tabBarItem.image = unselectedImage
         nav.tabBarItem.selectedImage = selectedImage
-        nav.navigationBar.tintColor = .systemBackground
+        nav.navigationBar.tintColor = .label
         
         return nav
     }
 }
 extension MainTabBarController : AuthDelegate {
     func authDidCompleted() {
-        profileViewModel.fetchUserFromAPI()
+//        profileViewModel.fetchUserFromAPI()
+        UserService.fetchUser { user in
+            self.user = user
+        }
         self.dismiss(animated: true, completion: nil)
     }
 }
