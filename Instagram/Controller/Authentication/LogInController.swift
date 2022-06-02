@@ -108,7 +108,6 @@ class LogInController : UIViewController {
     func configureTextFieldObserver(){
         emailTextField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
-
     }
     
     // MARK: OBJC Functions
