@@ -132,6 +132,7 @@ class LogInController : UIViewController {
     @objc func textChanged(sender: UITextField){
         if sender == emailTextField {
             logInViewModel.email = sender.text
+            
         }else {
             logInViewModel.password = sender.text
         }
