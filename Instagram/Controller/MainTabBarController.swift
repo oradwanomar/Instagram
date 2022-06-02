@@ -13,6 +13,7 @@ class MainTabBarController : UITabBarController {
     // MARK: - LifeCycle
     
 //    var profileViewModel = ProfileViewModel()
+    
     var user : User? {
         didSet {
             guard let user = user else {return}
