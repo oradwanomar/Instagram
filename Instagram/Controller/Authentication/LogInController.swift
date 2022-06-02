@@ -134,7 +134,6 @@ class LogInController : UIViewController {
             logInViewModel.email = sender.text
         }else {
             logInViewModel.password = sender.text
-            
         }
         updateFormEffect()
     }
