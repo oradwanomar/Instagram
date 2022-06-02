@@ -12,7 +12,7 @@ class MainTabBarController : UITabBarController {
     
     // MARK: - LifeCycle
     
-//    var profileViewModel = ProfileViewModel()
+    let profileViewModel = ProfileViewModel()
     
     var user : User? {
         didSet {
@@ -24,12 +24,16 @@ class MainTabBarController : UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         checkIfUserLoggedIn()
-        UserService.fetchUser { user in
-            self.user = user
-        }
+        fetchUsersFromFirebase()
     }
     
     // MARK: - Helpers
+    
+    func fetchUsersFromFirebase(){
+        profileViewModel.fetchUserWithCompletion { user in
+            self.user = user
+        }
+    }
     
     func checkIfUserLoggedIn(){
         let login = LogInController()
@@ -72,10 +76,7 @@ class MainTabBarController : UITabBarController {
 }
 extension MainTabBarController : AuthDelegate {
     func authDidCompleted() {
-//        profileViewModel.fetchUserFromAPI()
-        UserService.fetchUser { user in
-            self.user = user
-        }
+        fetchUsersFromFirebase()
         self.dismiss(animated: true, completion: nil)
     }
 }

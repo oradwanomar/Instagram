@@ -31,12 +31,21 @@ class ProfileViewModel {
     }
     
     init() {
-        self.fetchUserFromAPI()
+        self.fetchUserWithCompletion { user in
+            self.user = user
+        }
     }
     
     func fetchUserFromAPI(){
         UserService.fetchUser { user in
                 self.user = user
+        }
+    }
+    
+    func fetchUserWithCompletion(completion:@escaping (User)->Void){
+        UserService.fetchUser { user in
+            self.user = user
+            completion(user)
         }
     }
     
