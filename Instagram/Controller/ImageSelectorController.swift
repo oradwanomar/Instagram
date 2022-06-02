@@ -15,6 +15,5 @@ class ImageSelectorController : UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         
-        
     }
 }
