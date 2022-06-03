@@ -13,6 +13,7 @@ struct User {
     let uid: String
     let fullname: String
     let profileImageUrl: String
+    var isFollowed = false
     
     init(dictionary:[String:Any]){
         self.email = dictionary["email"] as? String ?? ""
