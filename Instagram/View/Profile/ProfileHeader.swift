@@ -8,9 +8,14 @@
 import UIKit
 import SDWebImage
 
+protocol ProfileDelegateProtocol : AnyObject{
+    func header(_ profileHeader:ProfileHeader,didTapActionButtonForUser user:User)
+}
+
 class ProfileHeader : UICollectionReusableView {
     
     //MARK: Properties
+    weak var delegate : ProfileDelegateProtocol?
     
     var phViewModel : ProfileViewModel? {
         didSet {configureViewModel()}
@@ -158,7 +163,19 @@ class ProfileHeader : UICollectionReusableView {
         profileImageView.sd_setImage(with: phViewModel.profileImageUrl, completed: nil)
         nameUser.text = phViewModel.fullname
         editProfileFollowBtn.setTitle(phViewModel.followButtonText, for: .normal)
+        if phViewModel.user.isCurrentUser {
+            editProfileFollowBtn.backgroundColor = .systemBackground
+            editProfileFollowBtn.titleLabel?.textColor = .label
+        }else if !phViewModel.user.isFollowed {
+            editProfileFollowBtn.backgroundColor = .systemBlue
+            editProfileFollowBtn.titleLabel?.textColor = .white
+        }
     }
     
-    @objc func handleEditProfileFollowTap(){}
+    @objc func handleEditProfileFollowTap(){
+        guard let phViewModel = phViewModel else {
+            return
+        }
+        delegate?.header(self, didTapActionButtonForUser: phViewModel.user)
+    }
 }
