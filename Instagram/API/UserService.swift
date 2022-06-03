@@ -33,5 +33,10 @@ class UserService {
         }
     }
     
-    
+    static func follow(uid:String,completion:@escaping (Error?)->Void){
+        guard let currentUserId = Auth.auth().currentUser?.uid else {return}
+        COLLECTION_FOLLOWING.document(currentUserId).collection("user-following").document(uid).setData([:]) { error in
+            COLLECTION_FOLLOWERS.document(uid).collection("user-followers").document(currentUserId).setData([:], completion: completion)
+        }
+    }
 }
