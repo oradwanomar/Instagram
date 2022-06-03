@@ -30,10 +30,23 @@ class ProfileViewModel {
         return URL(string: user.profileImageUrl)
     }
     
+    var followButtonText : String {
+        if user.isCurrentUser {
+            return "Edit Profile"
+        }
+        
+        return user.isFollowed ? "Following" : "Follow"
+    }
+    
+    
     init() {
         self.fetchUserWithCompletion { user in
             self.user = user
         }
+    }
+    
+    required init(user:User){
+        self.user = user
     }
     
     func fetchUserFromAPI(){

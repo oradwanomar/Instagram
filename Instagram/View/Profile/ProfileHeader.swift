@@ -11,16 +11,9 @@ import SDWebImage
 class ProfileHeader : UICollectionReusableView {
     
     //MARK: Properties
-//    var phViewModel : ProfileViewModel? {
-//
-//    }
     
-    var user : User? {
-        didSet {
-            guard let user = user else {return}
-            profileImageView.sd_setImage(with: URL(string: user.profileImageUrl), completed: nil)
-            nameUser.text = user.fullname
-        }
+    var phViewModel : ProfileViewModel? {
+        didSet {configureViewModel()}
     }
     
     
@@ -156,6 +149,15 @@ class ProfileHeader : UICollectionReusableView {
         let attributedText = NSMutableAttributedString(string: "\(value)\n", attributes: [.font : UIFont.boldSystemFont(ofSize: 14)])
         attributedText.append(NSAttributedString(string: label, attributes: [.font:UIFont.boldSystemFont(ofSize: 14),.foregroundColor:UIColor.lightGray]))
         return attributedText
+    }
+    
+    func configureViewModel(){
+        guard let phViewModel = phViewModel else {
+            return
+        }
+        profileImageView.sd_setImage(with: phViewModel.profileImageUrl, completed: nil)
+        nameUser.text = phViewModel.fullname
+        editProfileFollowBtn.setTitle(phViewModel.followButtonText, for: .normal)
     }
     
     @objc func handleEditProfileFollowTap(){}
