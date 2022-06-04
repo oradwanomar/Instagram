@@ -61,7 +61,6 @@ class ProfileHeader : UICollectionReusableView {
         let plabel = UILabel()
         plabel.numberOfLines = 0
         plabel.textAlignment = .center
-        plabel.attributedText = setProfileAttributedTexts(value: 8, label: "Followers")
         return plabel
     }()
     
@@ -69,7 +68,6 @@ class ProfileHeader : UICollectionReusableView {
         let plabel = UILabel()
         plabel.numberOfLines = 0
         plabel.textAlignment = .center
-        plabel.attributedText = setProfileAttributedTexts(value: 9, label: "Following")
         return plabel
     }()
     
@@ -163,12 +161,18 @@ class ProfileHeader : UICollectionReusableView {
         profileImageView.sd_setImage(with: phViewModel.profileImageUrl, completed: nil)
         nameUser.text = phViewModel.fullname
         editProfileFollowBtn.setTitle(phViewModel.followButtonText, for: .normal)
+        followersLabel.attributedText = setProfileAttributedTexts(value: phViewModel.user.stats.followers, label: "Followers")
+        followingLabel.attributedText = setProfileAttributedTexts(value: phViewModel.user.stats.following, label: "Following")
+//        editProfileFollowBtn.backgroundColor = phViewModel.followButtonBackgroundColor
         if phViewModel.user.isCurrentUser {
             editProfileFollowBtn.backgroundColor = .systemBackground
             editProfileFollowBtn.titleLabel?.textColor = .label
         }else if !phViewModel.user.isFollowed {
             editProfileFollowBtn.backgroundColor = .systemBlue
             editProfileFollowBtn.titleLabel?.textColor = .white
+        }else{
+            editProfileFollowBtn.backgroundColor = .systemBackground
+            editProfileFollowBtn.titleLabel?.textColor = .label
         }
     }
     

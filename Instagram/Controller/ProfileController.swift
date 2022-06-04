@@ -35,6 +35,10 @@ class ProfileController : UICollectionViewController {
     
     func checkUserFollowState(){
         let pvm = ProfileViewModel(user: user)
+        pvm.fetchUserStats { stats in
+            self.user.stats = stats
+            self.collectionView.reloadData()
+        }
         pvm.checkIfUserIsFollow { isFollowed in
             self.user.isFollowed = isFollowed
             self.collectionView.reloadData()

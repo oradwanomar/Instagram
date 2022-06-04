@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 class ProfileViewModel {
@@ -38,6 +39,14 @@ class ProfileViewModel {
         return user.isFollowed ? "Following" : "Follow"
     }
     
+//    var followButtonBackgroundColor : UIColor {
+//        if user.isCurrentUser {
+//            return .systemBackground
+//        }
+//
+//        return user.isFollowed ? .systemBackground : .systemBlue
+//    }
+    
     
     init() {
         self.fetchUserWithCompletion { user in
@@ -65,6 +74,12 @@ class ProfileViewModel {
     func checkIfUserIsFollow(completion: @escaping (Bool)->Void){
         UserService.checkIfUserIsFollowed(uid: user.uid) { isFollow in
             completion(isFollow)
+        }
+    }
+    
+    func fetchUserStats(completion: @escaping (UserStats)->Void){
+        UserService.fetchUserStats(uid: user.uid) { stats in
+            completion(stats)
         }
     }
     
