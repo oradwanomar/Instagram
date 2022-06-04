@@ -48,6 +48,7 @@ class UserService {
     }
     
     static func checkIfUserIsFollowed(uid:String,completion: @escaping (Bool)->Void){
+        guard let currentId = Auth.auth().currentUser?.uid else {return}
         
     }
 }
