@@ -49,9 +49,6 @@ class UserService {
     
     static func checkIfUserIsFollowed(uid:String,completion: @escaping (Bool)->Void){
         
-        
-        
-        
-        
+
     }
 }
