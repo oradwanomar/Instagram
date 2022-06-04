@@ -39,4 +39,15 @@ class UserService {
             COLLECTION_FOLLOWERS.document(uid).collection("user-followers").document(currentUserId).setData([:], completion: completion)
         }
     }
+    
+    static func unfollow(uid: String,completion: @escaping (Error?)->Void){
+        guard let currentId = Auth.auth().currentUser?.uid else {return}
+        COLLECTION_FOLLOWING.document(currentId).collection("user-following").document(uid).delete { error in
+            COLLECTION_FOLLOWERS.document(uid).collection("user-followers").document(currentId).delete(completion: completion)
+        }
+    }
+    
+    static func checkIfUserIsFollowed(uid:String,completion: @escaping (Bool)->Void){
+        
+    }
 }

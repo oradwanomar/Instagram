@@ -38,7 +38,7 @@ class ProfileHeader : UICollectionReusableView {
     
     private lazy var editProfileFollowBtn : UIButton = {
         let btn = UIButton(type: .system)
-        btn.setTitle("Edit Profile", for: .normal)
+        btn.setTitle("Loading...", for: .normal)
         btn.layer.cornerRadius = 3
         btn.layer.borderColor = UIColor.lightGray.cgColor
         btn.layer.borderWidth = 0.4

@@ -103,10 +103,15 @@ extension ProfileController : ProfileDelegateProtocol {
         if user.isCurrentUser {
             print("current user")
         }else if user.isFollowed {
+            UserService.unfollow(uid: user.uid) { error in
+                self.user.isFollowed = false
+                self.collectionView.reloadData()
+            }
             print("unfollow")
         }else{
             UserService.follow(uid: user.uid) { error in
-                print("Error : in follow function")
+                self.user.isFollowed = true
+                self.collectionView.reloadData()
             }
             print("follow")
         }
