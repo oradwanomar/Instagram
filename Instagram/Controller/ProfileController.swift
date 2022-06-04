@@ -114,7 +114,6 @@ extension ProfileController : ProfileDelegateProtocol {
                 self.user.isFollowed = false
                 self.collectionView.reloadData()
             }
-            print("unfollow")
         }else{
             UserService.follow(uid: user.uid) { error in
                 self.user.isFollowed = true
