@@ -120,7 +120,6 @@ extension ProfileController : ProfileDelegateProtocol {
                 self.user.isFollowed = true
                 self.collectionView.reloadData()
             }
-            print("follow")
         }
     }
 }
