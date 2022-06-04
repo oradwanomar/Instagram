@@ -53,7 +53,7 @@ class MainTabBarController : UITabBarController {
         
         let search = templatesNavigationControllers(selectedImage: UIImage(named: "search_selected")!, unselectedImage: UIImage(named: "search_unselected")!, rootViewController: SearchController())
         
-        let imageSelector = templatesNavigationControllers(selectedImage: UIImage(named: "plus_photo")!, unselectedImage: UIImage(named: "plus_unselected")!, rootViewController: ImageSelectorController())
+        let imageSelector = templatesNavigationControllers(selectedImage: UIImage(named: "plus_unselected")!, unselectedImage: UIImage(named: "plus_unselected")!, rootViewController: ImageSelectorController())
         
         let notification = templatesNavigationControllers(selectedImage: UIImage(named: "like_selected")!, unselectedImage: UIImage(named: "like_unselected")!, rootViewController: NotificationController())
         
