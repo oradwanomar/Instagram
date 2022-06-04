@@ -12,7 +12,6 @@ private let headerIdentifier = "profileHeader"
 class ProfileController : UICollectionViewController {
     
     var user : User
-//    var profileViewModel = ProfileViewModel()
     
     //MARK: LifeCycle
     
@@ -29,9 +28,17 @@ class ProfileController : UICollectionViewController {
         super.viewDidLoad()
         configureCollectionVIew()
         fetchUser()
-//        profileViewModel.bindingUserViewModelToView = {
-//            self.fetchUser()
-//        }
+        checkUserFollowState()
+    }
+    
+    // MARK: Call API
+    
+    func checkUserFollowState(){
+        let pvm = ProfileViewModel(user: user)
+        pvm.checkIfUserIsFollow { isFollowed in
+            self.user.isFollowed = isFollowed
+            self.collectionView.reloadData()
+        }
     }
     
     // MARK: Helper

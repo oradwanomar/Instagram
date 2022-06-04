@@ -62,4 +62,10 @@ class ProfileViewModel {
         }
     }
     
+    func checkIfUserIsFollow(completion: @escaping (Bool)->Void){
+        UserService.checkIfUserIsFollowed(uid: user.uid) { isFollow in
+            completion(isFollow)
+        }
+    }
+    
 }
