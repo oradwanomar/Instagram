@@ -54,7 +54,7 @@ class SearchController : UITableViewController {
     }
 }
 
-extension SearchController {
+extension SearchController{
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return isSearchMode ? filteredUsers.count : users.count
