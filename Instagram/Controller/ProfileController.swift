@@ -33,7 +33,7 @@ class ProfileController : UICollectionViewController {
     }
     
     // MARK: Call API
-    
+
     
     func checkUserFollowState(){
         let pvm = ProfileViewModel(user: user)
