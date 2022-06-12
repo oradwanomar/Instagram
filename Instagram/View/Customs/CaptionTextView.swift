@@ -7,6 +7,6 @@
 
 import UIKit
 
-class CaptionTextField : UITextField {
+class CaptionTextView : UITextView {
     
 }

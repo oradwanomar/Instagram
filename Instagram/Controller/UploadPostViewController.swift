@@ -17,6 +17,11 @@ class UploadPostViewController: UIViewController {
         iv.clipsToBounds = true
         return iv
     }()
+    
+    private let captionTextView : UITextView = {
+        let ctv = UITextView()
+        return ctv
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +31,14 @@ class UploadPostViewController: UIViewController {
         title = "New Post"
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(didTapCancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share", style: .done, target: self, action: #selector(didTabShare))
+        view.addSubview(photoSelected)
+    }
+    
+    func setUpConstrains(){
+        photoSelected.setDimensions(height: 200, width: 200)
+        photoSelected.layer.cornerRadius = 20
+        photoSelected.centerX(inView: view)
+        photoSelected.anchor(top:view.topAnchor)
     }
     
     //MARK: OBJ-C Functions
