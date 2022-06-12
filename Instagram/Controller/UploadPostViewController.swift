@@ -32,13 +32,15 @@ class UploadPostViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(didTapCancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share", style: .done, target: self, action: #selector(didTabShare))
         view.addSubview(photoSelected)
+        view.addSubview(captionTextView)
     }
     
     func setUpConstrains(){
         photoSelected.setDimensions(height: 200, width: 200)
         photoSelected.layer.cornerRadius = 20
         photoSelected.centerX(inView: view)
-        photoSelected.anchor(top:view.topAnchor)
+        photoSelected.anchor(top:view.safeAreaLayoutGuide.topAnchor,paddingTop: 12)
+        captionTextView.anchor(top: photoSelected.bottomAnchor,left: view.leftAnchor,right: view.rightAnchor,paddingTop: 16,paddingLeft: 12,paddingRight: 12,height: 64)
     }
     
     //MARK: OBJ-C Functions
