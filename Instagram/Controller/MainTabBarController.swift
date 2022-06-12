@@ -53,6 +53,10 @@ class MainTabBarController : UITabBarController {
             picker.dismiss(animated: true) {
                 guard let selectedImage = items.singlePhoto?.image else {return}
                 debugPrint(selectedImage)
+                
+                let nav = UINavigationController(rootViewController: UploadPostViewController())
+                nav.modalPresentationStyle = .fullScreen
+                self.present(nav, animated: true, completion: nil)
             }
         }
     }
