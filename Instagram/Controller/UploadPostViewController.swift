@@ -22,6 +22,14 @@ class UploadPostViewController: UIViewController {
         let ctv = UITextView()
         return ctv
     }()
+    
+    private let charactersCountLabel : UILabel = {
+        let chars = UILabel()
+        chars.font = UIFont.systemFont(ofSize: 14)
+        chars.tintColor = .lightGray
+        chars.text = "0/100"
+        return chars
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +41,7 @@ class UploadPostViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share", style: .done, target: self, action: #selector(didTabShare))
         view.addSubview(photoSelected)
         view.addSubview(captionTextView)
+        view.addSubview(charactersCountLabel)
     }
     
     func setUpConstrains(){
@@ -40,7 +49,10 @@ class UploadPostViewController: UIViewController {
         photoSelected.layer.cornerRadius = 20
         photoSelected.centerX(inView: view)
         photoSelected.anchor(top:view.safeAreaLayoutGuide.topAnchor,paddingTop: 12)
+        
         captionTextView.anchor(top: photoSelected.bottomAnchor,left: view.leftAnchor,right: view.rightAnchor,paddingTop: 16,paddingLeft: 12,paddingRight: 12,height: 64)
+        
+        charactersCountLabel.anchor(top: captionTextView.bottomAnchor,right:view.rightAnchor,paddingBottom: 12,paddingRight: 12)
     }
     
     //MARK: OBJ-C Functions
