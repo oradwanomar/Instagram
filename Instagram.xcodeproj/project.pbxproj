@@ -52,6 +52,7 @@
 		85B14A58284358E9002C1D3A /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B14A57284358E8002C1D3A /* ProfileCell.swift */; };
 		85B14A5A284358F5002C1D3A /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B14A59284358F5002C1D3A /* ProfileHeader.swift */; };
 		85C026172855C28200F53821 /* UploadPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C026162855C28200F53821 /* UploadPostViewController.swift */; };
+		85C0261B2855C7B600F53821 /* CaptionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C0261A2855C7B600F53821 /* CaptionTextField.swift */; };
 		85C86A452848948E000CD8EB /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C86A442848948E000CD8EB /* UserViewModel.swift */; };
 		85C8F6AD2835715700EE6E77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C8F6AC2835715700EE6E77 /* AppDelegate.swift */; };
 		85C8F6AF2835715700EE6E77 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C8F6AE2835715700EE6E77 /* SceneDelegate.swift */; };
@@ -88,6 +89,7 @@
 		85B14A57284358E8002C1D3A /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		85B14A59284358F5002C1D3A /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		85C026162855C28200F53821 /* UploadPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostViewController.swift; sourceTree = "<group>"; };
+		85C0261A2855C7B600F53821 /* CaptionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionTextField.swift; sourceTree = "<group>"; };
 		85C86A442848948E000CD8EB /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		85C8F6A92835715700EE6E77 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85C8F6AC2835715700EE6E77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -175,6 +177,25 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		85C026182855C78600F53821 /* Customs */ = {
+			isa = PBXGroup;
+			children = (
+				85286B3928394FBB007515CF /* CustomTextField.swift */,
+				85286B3B2839999B007515CF /* CustomAuthButton.swift */,
+				85C0261A2855C7B600F53821 /* CaptionTextField.swift */,
+			);
+			path = Customs;
+			sourceTree = "<group>";
+		};
+		85C026192855C79700F53821 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8511BDFC2845E81A00157CC3 /* UserCell.swift */,
+				85C8F6D2283612B800EE6E77 /* FeedCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		85C8F6A02835715700EE6E77 = {
 			isa = PBXGroup;
 			children = (
@@ -226,11 +247,9 @@
 		85C8F6C12835721E00EE6E77 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				85C026192855C79700F53821 /* Cells */,
+				85C026182855C78600F53821 /* Customs */,
 				85B14A56284358DA002C1D3A /* Profile */,
-				85C8F6D2283612B800EE6E77 /* FeedCell.swift */,
-				85286B3928394FBB007515CF /* CustomTextField.swift */,
-				85286B3B2839999B007515CF /* CustomAuthButton.swift */,
-				8511BDFC2845E81A00157CC3 /* UserCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -462,6 +481,7 @@
 				85C8F6C72835732300EE6E77 /* MainTabBarController.swift in Sources */,
 				85C8F6D52836137C00EE6E77 /* Extensions.swift in Sources */,
 				85C86A452848948E000CD8EB /* UserViewModel.swift in Sources */,
+				85C0261B2855C7B600F53821 /* CaptionTextField.swift in Sources */,
 				85C8F6AF2835715700EE6E77 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

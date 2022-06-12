@@ -8,6 +8,15 @@
 import UIKit
 
 class UploadPostViewController: UIViewController {
+    
+    //MARK: Properties
+    
+    private let photoSelected : UIImageView = {
+        let iv = UIImageView()
+        iv.contentMode = .scaleToFill
+        iv.clipsToBounds = true
+        return iv
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
