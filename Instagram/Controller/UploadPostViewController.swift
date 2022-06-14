@@ -18,10 +18,11 @@ class UploadPostViewController: UIViewController {
         return iv
     }()
     
-    private let captionTextView : CaptionTextView = {
+    private lazy var captionTextView : CaptionTextView = {
         let ctv = CaptionTextView()
         ctv.placeholderText = "Enter caption..."
         ctv.font = UIFont.systemFont(ofSize: 16)
+        ctv.delegate = self
         return ctv
     }()
     
@@ -35,9 +36,18 @@ class UploadPostViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureUI()
+        setUpConstrains()
+    }
+    
+    func checkMaxLength(_ textview: UITextView,maxLength: Int){
+        if textview.text.count > maxLength {
+            textview.deleteBackward() 
+        }
     }
     
     func configureUI(){
+        view.backgroundColor = .systemBackground
         title = "New Post"
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(didTapCancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share", style: .done, target: self, action: #selector(didTabShare))
@@ -54,7 +64,7 @@ class UploadPostViewController: UIViewController {
         
         captionTextView.anchor(top: photoSelected.bottomAnchor,left: view.leftAnchor,right: view.rightAnchor,paddingTop: 16,paddingLeft: 12,paddingRight: 12,height: 64)
         
-        charactersCountLabel.anchor(top: captionTextView.bottomAnchor,right:view.rightAnchor,paddingBottom: 12,paddingRight: 12)
+        charactersCountLabel.anchor(top: captionTextView.bottomAnchor,right:view.rightAnchor,paddingBottom: -8,paddingRight: 12)
     }
     
     //MARK: OBJ-C Functions
@@ -67,4 +77,12 @@ class UploadPostViewController: UIViewController {
         
     }
 
+}
+
+extension UploadPostViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        checkMaxLength(textView, maxLength: 100)
+        let count = textView.text.count
+        charactersCountLabel.text = "\(count)/100"
+    }
 }
