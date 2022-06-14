@@ -7,9 +7,19 @@
 
 import UIKit
 
+protocol UploadPostControllerDelegate: class {
+    func didFinishUploadPost(_ controller: UploadPostViewController)
+}
+
 class UploadPostViewController: UIViewController {
     
     //MARK: Properties
+    let postViewModel = PostsViewModel()
+    weak var delegate: UploadPostControllerDelegate?
+    
+    var selectedImage: UIImage? {
+        didSet {photoSelected.image = selectedImage}
+    }
     
     private let photoSelected : UIImageView = {
         let iv = UIImageView()
@@ -50,7 +60,9 @@ class UploadPostViewController: UIViewController {
         view.backgroundColor = .systemBackground
         title = "New Post"
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(didTapCancel))
+        navigationItem.leftBarButtonItem?.tintColor = .label
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share", style: .done, target: self, action: #selector(didTabShare))
+        navigationItem.rightBarButtonItem?.tintColor = .label
         view.addSubview(photoSelected)
         view.addSubview(captionTextView)
         view.addSubview(charactersCountLabel)
@@ -70,11 +82,15 @@ class UploadPostViewController: UIViewController {
     //MARK: OBJ-C Functions
     
     @objc func didTapCancel(){
-        dismiss(animated: true, completion: nil)
+        self.delegate?.didFinishUploadPost(self)
     }
     
     @objc func didTabShare(){
+        guard let caption = captionTextView.text else {return}
+        guard let selectedImage = selectedImage else {return}
         
+        postViewModel.uploadPost(caption: caption, image: selectedImage)
+        self.delegate?.didFinishUploadPost(self)
     }
 
 }
