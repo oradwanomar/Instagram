@@ -114,7 +114,7 @@ class SignUpController : UIViewController {
         guard let pImage = self.profileImage else {return}
         let user = AuthCredentials(email: email, password: password, fullname: fullname, username: username, profileImage: pImage)
         showLoader(true)
-        
+    
         AuthService.regesterUser(authcredential: user) { error in
             self.showLoader(false)
             if let error = error {
