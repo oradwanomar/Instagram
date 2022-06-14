@@ -115,7 +115,9 @@ class LogInController : UIViewController {
     @objc func handleLogIn(){
         guard let email = emailTextField.text else {return}
         guard let password = passwordTextField.text else {return}
+        showLoader(true)
         AuthService.logInUser(withEmail: email, withPassword: password) { result, error in
+            self.showLoader(false)
             if let error = error {
                 print("Error : in log in \(error.localizedDescription)")
                 return

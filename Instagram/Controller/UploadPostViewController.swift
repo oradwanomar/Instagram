@@ -88,8 +88,11 @@ class UploadPostViewController: UIViewController {
     @objc func didTabShare(){
         guard let caption = captionTextView.text else {return}
         guard let selectedImage = selectedImage else {return}
-        
+        DispatchQueue.main.async {
+            self.showLoader(true)
+        }
         postViewModel.uploadPost(caption: caption, image: selectedImage)
+        self.showLoader(false)
         self.delegate?.didFinishUploadPost(self)
     }
 
