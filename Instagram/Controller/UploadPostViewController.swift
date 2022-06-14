@@ -83,7 +83,6 @@ class UploadPostViewController: UIViewController {
     
     @objc func didTapCancel(){
         self.delegate?.didFinishUploadPost(self)
-
     }
     
     @objc func didTabShare(){
