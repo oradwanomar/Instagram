@@ -86,6 +86,7 @@ class UploadPostViewController: UIViewController {
         self.delegate?.didFinishUploadPost(self)
     }
     
+    
     @objc func didTabShare(){
         guard let caption = captionTextView.text else {return}
         guard let selectedImage = selectedImage else {return}
