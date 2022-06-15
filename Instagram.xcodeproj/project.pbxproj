@@ -185,12 +185,12 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		858E14A7285A621B00E1C1E1 /* New Group */ = {
+		858E14A7285A621B00E1C1E1 /* SubScreens */ = {
 			isa = PBXGroup;
 			children = (
 				85C026162855C28200F53821 /* UploadPostViewController.swift */,
 			);
-			path = "New Group";
+			path = SubScreens;
 			sourceTree = "<group>";
 		};
 		85B14A56284358DA002C1D3A /* Profile */ = {
@@ -293,7 +293,7 @@
 		85C8F6C32835723100EE6E77 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				858E14A7285A621B00E1C1E1 /* New Group */,
+				858E14A7285A621B00E1C1E1 /* SubScreens */,
 				858E14A6285A61FF00E1C1E1 /* Base */,
 				85286B3828393D97007515CF /* Authentication */,
 			);
