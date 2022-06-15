@@ -14,6 +14,7 @@ protocol UploadPostControllerDelegate: AnyObject {
 class UploadPostViewController: UIViewController {
     
     //MARK: Properties
+    
     let postViewModel = PostsViewModel()
     weak var delegate: UploadPostControllerDelegate?
     
