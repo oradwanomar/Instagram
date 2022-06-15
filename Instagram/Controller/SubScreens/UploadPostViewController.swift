@@ -100,6 +100,7 @@ class UploadPostViewController: UIViewController {
 
 }
 
+// MARK: UITextViewDelegate 
 
 extension UploadPostViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
