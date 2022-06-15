@@ -11,7 +11,7 @@ import YPImagePicker
 
 class MainTabBarController : UITabBarController {
     
-    // MARK: - Properties
+    // MARK: - Propertie
     
     let profileViewModel = ProfileViewModel()
     
