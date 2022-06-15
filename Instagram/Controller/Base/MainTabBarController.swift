@@ -11,7 +11,7 @@ import YPImagePicker
 
 class MainTabBarController : UITabBarController {
     
-   
+    // MARK: - LifeCycle
     
     let profileViewModel = ProfileViewModel()
     
