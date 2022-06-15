@@ -100,6 +100,7 @@ class UploadPostViewController: UIViewController {
 
 }
 
+
 extension UploadPostViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         checkMaxLength(textView, maxLength: 100)
