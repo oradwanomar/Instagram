@@ -11,7 +11,7 @@ import YPImagePicker
 
 class MainTabBarController : UITabBarController {
     
-    // MARK: - LifeCycle
+   
     
     let profileViewModel = ProfileViewModel()
     
@@ -21,6 +21,8 @@ class MainTabBarController : UITabBarController {
             configueViewControllers(withUser: user)
         }
     }
+    
+    // MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
