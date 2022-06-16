@@ -24,6 +24,8 @@ struct PostService {
         
     }
     
-    
+    static func fetchPosts(){
+        
+    }
     
 }
