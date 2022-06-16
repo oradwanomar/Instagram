@@ -22,7 +22,7 @@ struct PostService {
             COLLECTION_POSTS.addDocument(data: data, completion: completion)
         }
         
-    } 
+    }
     
     static func fetchPosts(){
         
