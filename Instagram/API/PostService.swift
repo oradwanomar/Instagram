@@ -19,6 +19,7 @@ struct PostService {
                         "likes": 0,
                         "imageUrl": imageURL,
                         "currentUid": uid ] as [String:Any]
+            
             COLLECTION_POSTS.addDocument(data: data, completion: completion)
         }
         
