@@ -13,9 +13,21 @@ class FeedController : UICollectionViewController {
     
     // MARK: - LifeCycle
     
+    private var posts: [Post] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configueUI()
+        fetchPostsFromFirebase()
+    }
+    
+    //MARK: - Call API
+    
+    func fetchPostsFromFirebase(){
+        PostService.fetchPosts { posts in
+            self.posts = posts
+            self.collectionView.reloadData()
+        }
     }
     
     
@@ -51,7 +63,7 @@ class FeedController : UICollectionViewController {
 
 extension FeedController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return posts.count
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! FeedCell
