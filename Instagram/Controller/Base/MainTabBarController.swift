@@ -28,6 +28,7 @@ class MainTabBarController : UITabBarController {
         super.viewDidLoad()
         checkIfUserLoggedIn()
         fetchUsersFromFirebase()
+        setUpNavBarStyle()
     }
     
     // MARK: - Helpers
@@ -81,6 +82,13 @@ class MainTabBarController : UITabBarController {
         viewControllers = [feed,search,imageSelector,notification,profile]
         
         tabBar.tintColor = .label
+    }
+    
+    func setUpNavBarStyle(){
+        self.tabBar.layer.masksToBounds = true
+        self.tabBar.isTranslucent = true
+        self.tabBar.layer.cornerRadius = 28
+        self.tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
     func templatesNavigationControllers(selectedImage : UIImage , unselectedImage:UIImage , rootViewController : UIViewController) -> UINavigationController {

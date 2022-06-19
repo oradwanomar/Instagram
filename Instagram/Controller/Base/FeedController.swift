@@ -19,6 +19,7 @@ class FeedController : UICollectionViewController {
         super.viewDidLoad()
         configueUI()
         fetchPostsFromFirebase()
+        setUPNavBar()
     }
     
     //MARK: - Call API
@@ -33,13 +34,30 @@ class FeedController : UICollectionViewController {
     
     // MARK: - Helpers
     
+    func setUPNavBar(){
+        let logo = UIImage(named: "logo")
+        logo?.withTintColor(.label, renderingMode: .alwaysTemplate)
+        let imageView = UIImageView(image:logo)
+        imageView.contentMode = .scaleAspectFit
+        self.navigationItem.titleView = imageView
+        
+        let messageButton = UIButton(type: .system)
+        messageButton.setImage(UIImage(named: "message")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        messageButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: messageButton)
+        
+        let logOutButton = UIButton(type: .system)
+        logOutButton.tintColor = .secondaryLabel
+        logOutButton.setImage(UIImage(systemName: "rectangle.portrait.and.arrow.right")?.withRenderingMode(.automatic), for: .normal)
+        logOutButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: logOutButton)
+        logOutButton.addTarget(self, action:#selector(handleLogout) , for: .touchUpInside)
+    }
+    
     func configueUI(){
         collectionView.backgroundColor = .systemBackground
         collectionView.showsVerticalScrollIndicator = false
         collectionView.register(FeedCell.self, forCellWithReuseIdentifier: identifier)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
-        navigationItem.leftBarButtonItem?.tintColor = .label
-        navigationItem.title = "Feed"
     }
     
     @objc func handleLogout(){
@@ -67,6 +85,7 @@ extension FeedController {
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! FeedCell
+        cell.viewModel = PostsViewModel(post: posts[indexPath.row])
         return cell
     }
     

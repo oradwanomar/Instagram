@@ -15,7 +15,6 @@ class UploadPostViewController: UIViewController {
     
     //MARK: Properties
     
-    let postViewModel = PostsViewModel()
     weak var delegate: UploadPostControllerDelegate?
     
     var selectedImage: UIImage? {
@@ -93,8 +92,12 @@ class UploadPostViewController: UIViewController {
         DispatchQueue.main.async {
             self.showLoader(true)
         }
-        postViewModel.uploadPost(caption: caption, image: selectedImage)
-        self.showLoader(false)
+        PostService.uploadPost(caption: caption, image: selectedImage) { error in
+            self.showLoader(false)
+            if let error = error {
+                print("Error: Failed to upload post with \(error.localizedDescription)")
+            }
+        }
         self.delegate?.didFinishUploadPost(self)
     }
 

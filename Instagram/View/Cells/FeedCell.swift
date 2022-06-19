@@ -6,11 +6,18 @@
 //
 
 import UIKit
+import SDWebImage
 
 
 class FeedCell : UICollectionViewCell {
     
     // MARK: Properties
+    
+    var viewModel: PostsViewModel? {
+        didSet {
+            configureFeedCell()
+        }
+    }
     
     private let profileImgView : UIImageView = {
         let piv = UIImageView()
@@ -71,7 +78,6 @@ class FeedCell : UICollectionViewCell {
     private let captionLabel : UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
-        label.text = "test caption for now..."
         label.textColor = .label
         return label
     }()
@@ -79,7 +85,6 @@ class FeedCell : UICollectionViewCell {
     private let postTimeLabel : UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 12)
-        label.text = "2 days ago"
         label.textColor = .lightGray
         return label
     }()
@@ -107,6 +112,14 @@ class FeedCell : UICollectionViewCell {
     }
     
     // MARK: Helper
+    
+    func configureFeedCell(){
+        guard let viewModel = viewModel else {
+            return
+        }
+        captionLabel.text = viewModel.post.caption
+        postImgView.sd_setImage(with: URL(string: viewModel.post.imageUrl))
+    }
     
     func setUpCell(){
         contentView.backgroundColor = .systemBackground
