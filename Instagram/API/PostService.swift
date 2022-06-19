@@ -24,8 +24,16 @@ struct PostService {
         
     }
     
-    static func fetchPosts(){
-        
+    static func fetchPosts(completion: @escaping ([Post])->()){
+        var posts : [Post] = []
+        COLLECTION_POSTS.getDocuments { snapshot, error in
+            guard let documents = snapshot?.documents else {return}
+            documents.forEach { doc in
+                let post = Post(postId: doc.documentID, dictionary: doc.data())
+                posts.append(post)
+            }
+            completion(posts)
+        }
     }
     
 }

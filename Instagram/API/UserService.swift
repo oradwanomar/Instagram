@@ -19,15 +19,8 @@ class UserService {
     }
     
     static func fetchUsers(completion:@escaping ([User])->Void){
-//        var users : [User] = []
         COLLECTION_USERS.getDocuments { snapshot, error in
-            guard let snapshot = snapshot else {
-                return
-            }
-//            snapshot.documents.forEach { document in
-//                let user = User(dictionary: document.data())
-//                users.append(user)
-//            }
+            guard let snapshot = snapshot else {return}
             let users = snapshot.documents.map({User(dictionary: $0.data())})
             completion(users)
         }
