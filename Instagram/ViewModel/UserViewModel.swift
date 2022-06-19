@@ -8,8 +8,6 @@
 import Foundation
 
 class UserViewModel {
-    var prof = ProfileViewModel()
-    
     var user: User
     
     var username : String {
