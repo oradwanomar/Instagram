@@ -24,14 +24,12 @@ class FeedCell : UICollectionViewCell {
         piv.contentMode = .scaleAspectFill
         piv.clipsToBounds = true
         piv.isUserInteractionEnabled = true
-        piv.image = UIImage(named: "venom")
         return piv
     }()
     
     private lazy var usernameButton : UIButton = {
         let btn = UIButton()
         btn.setTitleColor(.label, for: .normal)
-        btn.setTitle("omarradwan", for: .normal)
         btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         btn.addTarget(self, action: #selector(didTapUsername), for: .touchUpInside)
         return btn
@@ -119,6 +117,14 @@ class FeedCell : UICollectionViewCell {
         }
         captionLabel.text = viewModel.post.caption
         postImgView.sd_setImage(with: URL(string: viewModel.post.imageUrl))
+        profileImgView.sd_setImage(with: URL(string: viewModel.post.ownerImageUrl))
+        usernameButton.setTitle(viewModel.post.ownerUsername, for: .normal)
+        
+        if viewModel.post.likes != 1 {
+            likesLabel.text = "\(viewModel.post.likes) likes"
+        }else{
+            likesLabel.text = "\(viewModel.post.likes) like"
+        }
     }
     
     func setUpCell(){

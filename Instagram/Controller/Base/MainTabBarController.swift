@@ -59,6 +59,7 @@ class MainTabBarController : UITabBarController {
                 let uploadVC = UploadPostViewController()
                 uploadVC.selectedImage = selectedImage
                 uploadVC.delegate = self
+                uploadVC.currentUser = self.user
                 let nav = UINavigationController(rootViewController: uploadVC)
                 nav.modalPresentationStyle = .fullScreen
                 self.present(nav, animated: true, completion: nil)

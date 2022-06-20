@@ -16,6 +16,7 @@ class UploadPostViewController: UIViewController {
     //MARK: Properties
     
     weak var delegate: UploadPostControllerDelegate?
+    var currentUser: User?
     
     var selectedImage: UIImage? {
         didSet {photoSelected.image = selectedImage}
@@ -89,10 +90,11 @@ class UploadPostViewController: UIViewController {
     @objc func didTabShare(){
         guard let caption = captionTextView.text else {return}
         guard let selectedImage = selectedImage else {return}
+        guard let currentUser = currentUser else {return}
         DispatchQueue.main.async {
             self.showLoader(true)
         }
-        PostService.uploadPost(caption: caption, image: selectedImage) { error in
+        PostService.uploadPost(caption: caption, user: currentUser, image: selectedImage) { error in
             self.showLoader(false)
             if let error = error {
                 print("Error: Failed to upload post with \(error.localizedDescription)")
