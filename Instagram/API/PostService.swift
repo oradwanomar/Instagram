@@ -25,7 +25,6 @@ struct PostService {
         }
     }
     
-
     
     static func fetchPosts(completion: @escaping ([Post])->()){
         var posts : [Post] = []
