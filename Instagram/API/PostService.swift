@@ -23,7 +23,6 @@ struct PostService {
                         "ownerUsername": user.username] as [String:Any]
             COLLECTION_POSTS.addDocument(data: data, completion: completion)
         }
-        
     }
     
     static func fetchPosts(completion: @escaping ([Post])->()){
