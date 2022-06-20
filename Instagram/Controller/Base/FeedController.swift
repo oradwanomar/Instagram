@@ -27,6 +27,7 @@ class FeedController : UICollectionViewController {
     func fetchPostsFromFirebase(){
         PostService.fetchPosts { posts in
             self.posts = posts
+            self.collectionView.refreshControl?.endRefreshing()
             self.collectionView.reloadData()
         }
     }
@@ -58,6 +59,15 @@ class FeedController : UICollectionViewController {
         collectionView.backgroundColor = .systemBackground
         collectionView.showsVerticalScrollIndicator = false
         collectionView.register(FeedCell.self, forCellWithReuseIdentifier: identifier)
+        
+        let refresher = UIRefreshControl()
+        refresher.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
+        collectionView.refreshControl = refresher
+    }
+    
+    @objc func didPullToRefresh(){
+        posts.removeAll()
+        fetchPostsFromFirebase()
     }
     
     @objc func handleLogout(){
