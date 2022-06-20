@@ -19,7 +19,7 @@ struct Post {
     let ownerUsername: String
     
     
-    
+
     
     init(postId: String,dictionary:[String:Any]) {
         self.postId = postId
