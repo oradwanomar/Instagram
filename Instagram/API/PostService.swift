@@ -28,7 +28,7 @@ struct PostService {
     
     static func fetchPosts(completion: @escaping ([Post])->()){
         var posts : [Post] = []
-        COLLECTION_POSTS.getDocuments { snapshot, error in
+        COLLECTION_POSTS.order(by: "timestamp", descending: true).getDocuments { snapshot, error in
             guard let documents = snapshot?.documents else {return}
             documents.forEach { doc in
                 let post = Post(postId: doc.documentID, dictionary: doc.data())
