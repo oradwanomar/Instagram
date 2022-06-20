@@ -25,6 +25,7 @@ struct PostService {
         }
     }
     
+    
     static func fetchPosts(completion: @escaping ([Post])->()){
         var posts : [Post] = []
         COLLECTION_POSTS.order(by: "timestamp", descending: true).getDocuments { snapshot, error in
