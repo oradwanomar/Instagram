@@ -124,7 +124,6 @@ class FeedCell : UICollectionViewCell {
             likesLabel.text = "\(viewModel.post.likes) likes"
         }else{
             likesLabel.text = "\(viewModel.post.likes) like"
-            
         }
     }
     
