@@ -10,22 +10,9 @@ import UIKit
 
 class PostsViewModel {
     
-    var post: Post    
+    let post: Post    
     
     init(post:Post) {
         self.post = post
     }
-    
-    
-    
-    func uploadPost(caption: String,image: UIImage){
-        PostService.uploadPost(caption: caption, image: image) { error in
-            if let error = error {
-                print("Error: Failed to upload post with \(error.localizedDescription)")
-            }
-        }
-    }
-    
-    
-    
 }

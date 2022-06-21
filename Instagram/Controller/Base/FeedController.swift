@@ -13,12 +13,13 @@ class FeedController : UICollectionViewController {
     
     // MARK: - LifeCycle
     
-    private var posts: [Post] = []
+    private var posts = [Post]()
+    let refresher = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configueUI()
         fetchPostsFromFirebase()
+        configueUI()
         setUPNavBar()
     }
     
@@ -27,7 +28,7 @@ class FeedController : UICollectionViewController {
     func fetchPostsFromFirebase(){
         PostService.fetchPosts { posts in
             self.posts = posts
-            self.collectionView.refreshControl?.endRefreshing()
+            self.refresher.endRefreshing()
             self.collectionView.reloadData()
         }
     }
@@ -60,13 +61,12 @@ class FeedController : UICollectionViewController {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.register(FeedCell.self, forCellWithReuseIdentifier: identifier)
         
-        let refresher = UIRefreshControl()
         refresher.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
-        collectionView.refreshControl = refresher
+        collectionView.addSubview(refresher)
     }
     
     @objc func didPullToRefresh(){
-        posts.removeAll()
+//        posts.removeAll()
         fetchPostsFromFirebase()
     }
     

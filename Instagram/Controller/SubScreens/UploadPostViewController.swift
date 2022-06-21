@@ -91,9 +91,7 @@ class UploadPostViewController: UIViewController {
         guard let caption = captionTextView.text else {return}
         guard let selectedImage = selectedImage else {return}
         guard let currentUser = currentUser else {return}
-        DispatchQueue.main.async {
-            self.showLoader(true)
-        }
+        showLoader(true)
         PostService.uploadPost(caption: caption, user: currentUser, image: selectedImage) { error in
             self.showLoader(false)
             if let error = error {
