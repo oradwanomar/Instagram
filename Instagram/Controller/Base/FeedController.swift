@@ -70,6 +70,7 @@ class FeedController : UICollectionViewController {
         fetchPostsFromFirebase()
     }
     
+    
     @objc func handleLogout(){
         do {
             try Auth.auth().signOut()
