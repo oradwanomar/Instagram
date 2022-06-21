@@ -37,6 +37,8 @@ struct PostService {
         }
     }
     
-    
+    static func fetchUserPosts(){
+        
+    }
     
 }
