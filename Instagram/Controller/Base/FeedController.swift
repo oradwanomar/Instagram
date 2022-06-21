@@ -69,7 +69,6 @@ class FeedController : UICollectionViewController {
         posts.removeAll()
         fetchPostsFromFirebase()
     }
-
     
     @objc func handleLogout(){
         do {
