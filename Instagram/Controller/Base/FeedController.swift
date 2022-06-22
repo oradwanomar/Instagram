@@ -73,8 +73,10 @@ class FeedController : UICollectionViewController {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.register(FeedCell.self, forCellWithReuseIdentifier: identifier)
         
-        refresher.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
-        collectionView.addSubview(refresher)
+        if profilePosts.count == 0 {
+            refresher.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
+            collectionView.addSubview(refresher)
+        }
     }
     
     func setUpPostsFromProfile(){
@@ -82,13 +84,12 @@ class FeedController : UICollectionViewController {
             guard let indexPath = indexPath else {
                 return
             }
-            collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: true)
+            collectionView.scrollToItem(at: indexPath, at: .top, animated: true)
         }
     }
     
     
     @objc func didPullToRefresh(){
-        guard profilePosts.count == 0 else {return}
         posts.removeLast()
         fetchPostsFromFirebase()
     }
