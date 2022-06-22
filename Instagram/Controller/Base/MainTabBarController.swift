@@ -146,6 +146,5 @@ extension MainTabBarController: UploadPostControllerDelegate {
         guard let feedNav = viewControllers?.first as? UINavigationController else {return}
         guard let feed = feedNav.viewControllers.first as? FeedController else {return}
         feed.didPullToRefresh()
-        
     }
 }
