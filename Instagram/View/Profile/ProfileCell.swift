@@ -10,6 +10,14 @@ import UIKit
 class ProfileCell : UICollectionViewCell {
     
     //MARK: Properties
+    
+    var viewModel: PostsViewModel? {
+        didSet {
+            configureUserPostCell()
+        }
+    }
+    
+    
     private let postImageView : UIImageView = {
         let piv = UIImageView()
         piv.image = UIImage(named: "venom")
@@ -23,9 +31,16 @@ class ProfileCell : UICollectionViewCell {
     
     override init(frame:CGRect){
         super.init(frame: frame)
-        backgroundColor = .systemPink
+        backgroundColor = .lightGray
         addSubview(postImageView)
         postImageView.fillSuperview()
+    }
+    
+    func configureUserPostCell() {
+        guard let viewModel = viewModel else {
+            return
+        }
+        postImageView.sd_setImage(with: URL(string: viewModel.post.imageUrl))
     }
     
     required init?(coder: NSCoder) {

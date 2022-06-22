@@ -12,6 +12,7 @@ private let headerIdentifier = "profileHeader"
 class ProfileController : UICollectionViewController {
     
     var user : User
+    var posts : [Post] = []
     
     //MARK: LifeCycle
     
@@ -30,9 +31,17 @@ class ProfileController : UICollectionViewController {
         fetchUser()
         checkUserFollowState()
         checkUserNumbersStates()
+        fetchUserPostsFromAPI()
     }
     
     // MARK: Call API
+    
+    func fetchUserPostsFromAPI(){
+        PostService.fetchUserPosts(uid: user.uid) { posts in
+            self.posts = posts
+            self.collectionView.reloadData()
+        }
+    }
     
     func checkUserFollowState(){
         let pvm = ProfileViewModel(user: user)
@@ -71,11 +80,12 @@ class ProfileController : UICollectionViewController {
 extension ProfileController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 14
+        return posts.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: profileIdentifier, for: indexPath) as! ProfileCell
+        cell.viewModel = PostsViewModel(post: posts[indexPath.row])
         return cell
     }
     
@@ -91,6 +101,12 @@ extension ProfileController {
 //MARK: UICollectionViewDelegate
 
 extension ProfileController {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let feedCV = FeedController(collectionViewLayout: UICollectionViewFlowLayout())
+        feedCV.indexPath = indexPath
+        feedCV.profilePosts = posts
+        navigationController?.pushViewController(feedCV, animated: true)
+    }
     
 }
 

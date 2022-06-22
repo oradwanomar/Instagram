@@ -74,20 +74,21 @@ class ProfileHeader : UICollectionReusableView{
     let gridButton : UIButton = {
         let btn = UIButton(type: .system)
         btn.setImage(UIImage(named: "grid"), for: .normal)
+        btn.tintColor = .label
         return btn
     }()
     
     let listButton : UIButton = {
         let btn = UIButton(type: .system)
         btn.setImage(UIImage(named: "list"), for: .normal)
-        btn.tintColor = UIColor(white: 0, alpha: 0.2)
+        btn.tintColor = .lightGray
         return btn
     }()
     
     let bookMarkButton : UIButton = {
         let btn = UIButton(type: .system)
         btn.setImage(UIImage(named: "ribbon"), for: .normal)
-        btn.tintColor = UIColor(white: 0, alpha: 0.2)
+        btn.tintColor = .lightGray
         return btn
     }()
     
@@ -163,6 +164,7 @@ class ProfileHeader : UICollectionReusableView{
         editProfileFollowBtn.setTitle(phViewModel.followButtonText, for: .normal)
         followersLabel.attributedText = setProfileAttributedTexts(value: phViewModel.user.stats.followers, label: "Followers")
         followingLabel.attributedText = setProfileAttributedTexts(value: phViewModel.user.stats.following, label: "Following")
+        postsLabel.attributedText = setProfileAttributedTexts(value: phViewModel.user.stats.posts, label: "Posts")
 //        editProfileFollowBtn.backgroundColor = phViewModel.followButtonBackgroundColor
         if phViewModel.user.isCurrentUser {
             editProfileFollowBtn.backgroundColor = .systemBackground

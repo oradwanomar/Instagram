@@ -149,3 +149,12 @@ extension UIViewController{
         view.endEditing(true)
     }
 }
+
+
+extension UIViewController {
+    func setProfileAttributedTitle(top : String,bottom : String) -> NSAttributedString {
+        let attributedText = NSMutableAttributedString(string: top.uppercased()+" ", attributes: [.font : UIFont.boldSystemFont(ofSize: 13),.foregroundColor: UIColor.secondaryLabel])
+        attributedText.append(NSAttributedString(string: bottom, attributes: [.font:UIFont.boldSystemFont(ofSize: 14),.foregroundColor:UIColor.label]))
+        return attributedText
+    }
+}

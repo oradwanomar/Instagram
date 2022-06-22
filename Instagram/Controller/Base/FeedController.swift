@@ -13,19 +13,23 @@ class FeedController : UICollectionViewController {
     
     // MARK: - LifeCycle
     
-    private var posts = [Post]()
+    var posts = [Post]()
     let refresher = UIRefreshControl()
+    var profilePosts : [Post] = []
+    var indexPath: IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchPostsFromFirebase()
         configueUI()
         setUPNavBar()
+        setUpPostsFromProfile()
     }
     
     //MARK: - Call API
     
     func fetchPostsFromFirebase(){
+        guard profilePosts.count == 0 else {return}
         PostService.fetchPosts { posts in
             self.posts = posts
             self.refresher.endRefreshing()
@@ -37,23 +41,30 @@ class FeedController : UICollectionViewController {
     // MARK: - Helpers
     
     func setUPNavBar(){
-        let logo = UIImage(named: "logo")
-        logo?.withTintColor(.label, renderingMode: .alwaysTemplate)
-        let imageView = UIImageView(image:logo)
-        imageView.contentMode = .scaleAspectFit
-        self.navigationItem.titleView = imageView
-        
-        let messageButton = UIButton(type: .system)
-        messageButton.setImage(UIImage(named: "message")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        messageButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: messageButton)
-        
-        let logOutButton = UIButton(type: .system)
-        logOutButton.tintColor = .secondaryLabel
-        logOutButton.setImage(UIImage(systemName: "rectangle.portrait.and.arrow.right")?.withRenderingMode(.automatic), for: .normal)
-        logOutButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: logOutButton)
-        logOutButton.addTarget(self, action:#selector(handleLogout) , for: .touchUpInside)
+        if profilePosts.count == 0 {
+            let logo = UIImage(named: "logo")
+            logo?.withTintColor(.label, renderingMode: .alwaysTemplate)
+            let imageView = UIImageView(image:logo)
+            imageView.contentMode = .scaleAspectFit
+            self.navigationItem.titleView = imageView
+            
+            let messageButton = UIButton(type: .system)
+            messageButton.setImage(UIImage(named: "message")?.withRenderingMode(.alwaysOriginal), for: .normal)
+            messageButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+            navigationItem.rightBarButtonItem = UIBarButtonItem(customView: messageButton)
+            
+            let logOutButton = UIButton(type: .system)
+            logOutButton.tintColor = .secondaryLabel
+            logOutButton.setImage(UIImage(systemName: "rectangle.portrait.and.arrow.right")?.withRenderingMode(.automatic), for: .normal)
+            logOutButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+            navigationItem.leftBarButtonItem = UIBarButtonItem(customView: logOutButton)
+            logOutButton.addTarget(self, action:#selector(handleLogout) , for: .touchUpInside)
+        }else {
+            let centerTitle = UILabel()
+            centerTitle.attributedText = setProfileAttributedTitle(top: "morrrii", bottom: "Posts")
+            navigationItem.titleView = centerTitle
+        }
+
     }
     
     func configueUI(){
@@ -65,8 +76,19 @@ class FeedController : UICollectionViewController {
         collectionView.addSubview(refresher)
     }
     
+    func setUpPostsFromProfile(){
+        if profilePosts.count != 0 {
+            guard let indexPath = indexPath else {
+                return
+            }
+            collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: true)
+        }
+    }
+    
+    
     @objc func didPullToRefresh(){
-//        posts.removeAll()
+        guard profilePosts.count == 0 else {return}
+        posts.removeLast()
         fetchPostsFromFirebase()
     }
     
@@ -91,11 +113,16 @@ class FeedController : UICollectionViewController {
 
 extension FeedController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return posts.count
+        return profilePosts.count == 0 ? posts.count : profilePosts.count
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! FeedCell
-        cell.viewModel = PostsViewModel(post: posts[indexPath.row])
+        
+        if profilePosts.count == 0 {
+            cell.viewModel = PostsViewModel(post: posts[indexPath.row])
+        }else {
+            cell.viewModel = PostsViewModel(post: profilePosts[indexPath.row])
+        }
         return cell
     }
     
