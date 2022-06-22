@@ -85,7 +85,6 @@ class FeedController : UICollectionViewController {
                 return
             }
             collectionView.scrollToItem(at: indexPath, at: .top, animated: true)
-            
         }
     }
     
