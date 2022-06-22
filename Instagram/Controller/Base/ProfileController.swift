@@ -103,6 +103,7 @@ extension ProfileController {
 extension ProfileController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let feedCV = FeedController(collectionViewLayout: UICollectionViewFlowLayout())
+        feedCV.username = user.username
         feedCV.indexPath = indexPath
         feedCV.profilePosts = posts
         navigationController?.pushViewController(feedCV, animated: true)

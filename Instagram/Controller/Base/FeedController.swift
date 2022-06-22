@@ -17,6 +17,7 @@ class FeedController : UICollectionViewController {
     let refresher = UIRefreshControl()
     var profilePosts : [Post] = []
     var indexPath: IndexPath?
+    var username: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +62,7 @@ class FeedController : UICollectionViewController {
             logOutButton.addTarget(self, action:#selector(handleLogout) , for: .touchUpInside)
         }else {
             let centerTitle = UILabel()
-            centerTitle.attributedText = setProfileAttributedTitle(top: "morrrii", bottom: "Posts")
+            centerTitle.attributedText = setProfileAttributedTitle(top: "\(username!)", bottom: "Posts")
             navigationItem.titleView = centerTitle
         }
 
