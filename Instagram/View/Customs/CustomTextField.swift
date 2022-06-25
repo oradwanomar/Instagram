@@ -34,3 +34,12 @@ class CustomTextField : UITextField {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+//extension UITextField {
+//    func makePaddingPlaceholder(){
+//        let spacer = UIView()
+//        spacer.setDimensions(height: 50, width: 50)
+//        leftView = spacer
+//        leftViewMode = .always
+//    }
+//}
