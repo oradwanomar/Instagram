@@ -18,6 +18,10 @@ class CommentsController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    func configureCollectionView(){
+        title = "Comments"
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
 
