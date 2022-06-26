@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-private let identifier = "cell"
+private let identifier = "feedCell"
 class FeedController : UICollectionViewController {
     
     // MARK: - LifeCycle
@@ -119,6 +119,7 @@ extension FeedController {
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! FeedCell
+        cell.delegate = self
         
         if profilePosts.count == 0 {
             cell.viewModel = PostsViewModel(post: posts[indexPath.row])
@@ -137,5 +138,15 @@ extension FeedController : UICollectionViewDelegateFlowLayout{
         height += 50
         height += 60
         return CGSize(width: view.frame.width, height: height)
+    }
+}
+
+
+// MARK: FeedCellDelegate
+
+extension FeedController: FeedCellDelegate{
+    func cell(for cell: FeedCell, wantsToShowCommentsFor post: Post) {
+        let commentVC = CommentsController(collectionViewLayout: UICollectionViewFlowLayout())
+        navigationController?.pushViewController(commentVC, animated: true)
     }
 }
