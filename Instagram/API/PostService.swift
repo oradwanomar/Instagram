@@ -41,7 +41,8 @@ struct PostService {
        let query =  COLLECTION_POSTS.whereField("currentUid", isEqualTo: uid)
         query.getDocuments { snapshot, error in
             guard let snapshot = snapshot?.documents else {return}
-            let posts = snapshot.map({Post(postId: $0.documentID, dictionary: $0.data())})
+            var posts = snapshot.map({Post(postId: $0.documentID, dictionary: $0.data())})
+            posts.sort { $0.timestamp.seconds > $1.timestamp.seconds }
             completion(posts)
         }
     }
