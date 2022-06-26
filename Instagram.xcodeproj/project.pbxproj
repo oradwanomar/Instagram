@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5A4C8E04DE4001F8AEABDFE7 /* Pods_Instagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A426E0267A15871170EB4C21 /* Pods_Instagram.framework */; };
 		8511BDFD2845E81A00157CC3 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8511BDFC2845E81A00157CC3 /* UserCell.swift */; };
+		8518418F28680C160009E73C /* CommentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8518418E28680C160009E73C /* CommentsController.swift */; };
+		8518419128680D210009E73C /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8518419028680D210009E73C /* CommentCell.swift */; };
 		85286B3A28394FBB007515CF /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85286B3928394FBB007515CF /* CustomTextField.swift */; };
 		85286B3C2839999B007515CF /* CustomAuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85286B3B2839999B007515CF /* CustomAuthButton.swift */; };
 		85286B3E2839B2B2007515CF /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85286B3D2839B2B2007515CF /* AuthViewModel.swift */; };
@@ -76,6 +78,8 @@
 /* Begin PBXFileReference section */
 		007645438F726A553B86AA18 /* Pods-Instagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram.debug.xcconfig"; path = "Target Support Files/Pods-Instagram/Pods-Instagram.debug.xcconfig"; sourceTree = "<group>"; };
 		8511BDFC2845E81A00157CC3 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		8518418E28680C160009E73C /* CommentsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsController.swift; sourceTree = "<group>"; };
+		8518419028680D210009E73C /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		85286B3928394FBB007515CF /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		85286B3B2839999B007515CF /* CustomAuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAuthButton.swift; sourceTree = "<group>"; };
 		85286B3D2839B2B2007515CF /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
@@ -191,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				85C026162855C28200F53821 /* UploadPostViewController.swift */,
+				8518418E28680C160009E73C /* CommentsController.swift */,
 			);
 			path = SubScreens;
 			sourceTree = "<group>";
@@ -219,6 +224,7 @@
 			children = (
 				8511BDFC2845E81A00157CC3 /* UserCell.swift */,
 				85C8F6D2283612B800EE6E77 /* FeedCell.swift */,
+				8518419028680D210009E73C /* CommentCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -488,6 +494,7 @@
 				85A5687F28448F5F004F50BF /* Constans.swift in Sources */,
 				853F8A47283828DD00DDBC0D /* LogInController.swift in Sources */,
 				85A5688328448FF4004F50BF /* UserService.swift in Sources */,
+				8518419128680D210009E73C /* CommentCell.swift in Sources */,
 				85286B3E2839B2B2007515CF /* AuthViewModel.swift in Sources */,
 				85C8F6D3283612B800EE6E77 /* FeedCell.swift in Sources */,
 				85C745ED285EE09300F1FB5D /* Post.swift in Sources */,
@@ -511,6 +518,7 @@
 				85C86A452848948E000CD8EB /* UserViewModel.swift in Sources */,
 				85C0261B2855C7B600F53821 /* CaptionTextView.swift in Sources */,
 				85C8F6AF2835715700EE6E77 /* SceneDelegate.swift in Sources */,
+				8518418F28680C160009E73C /* CommentsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
