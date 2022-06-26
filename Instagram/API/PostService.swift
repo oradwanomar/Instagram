@@ -38,7 +38,6 @@ struct PostService {
     }
     
     static func fetchUserPosts(uid: String,completion: @escaping ([Post])->()){
-
        let query =  COLLECTION_POSTS.whereField("currentUid", isEqualTo: uid)
         query.getDocuments { snapshot, error in
             guard let snapshot = snapshot?.documents else {return}
