@@ -18,11 +18,13 @@ class CommentsController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureCollectionView()
     }
     
     func configureCollectionView(){
         title = "Comments"
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.backgroundColor = .systemBackground
+        collectionView.register(CommentCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
 
 
@@ -31,13 +33,9 @@ class CommentsController: UICollectionViewController {
 // MARK: UICollectionViewDataSource
 
 extension CommentsController {
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 0
-    }
-
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return 5
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
