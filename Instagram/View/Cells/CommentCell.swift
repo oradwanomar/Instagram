@@ -41,11 +41,14 @@ class CommentCell: UICollectionViewCell {
     func configureCell(){
         backgroundColor = .systemBackground
         addSubview(userProfileImage)
+        addSubview(commentLabel)
     }
     
     func setupConstrains(){
         userProfileImage.centerY(inView: self,leftAnchor: leftAnchor,paddingLeft: 8)
         userProfileImage.setDimensions(height: 40, width: 40)
+        
+        commentLabel.centerY(inView: self,leftAnchor: userProfileImage.rightAnchor,paddingLeft: 8)
     }
     
     required init?(coder: NSCoder) {

@@ -13,6 +13,11 @@ class CommentsController: UICollectionViewController {
     
     //MARK: properities
     
+    private lazy var commentView: CommentInputView = {
+        let frame  = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
+        let cv = CommentInputView(frame: frame)
+        return cv
+    }()
     
     //MARK: lifeCycle
 
@@ -21,10 +26,30 @@ class CommentsController: UICollectionViewController {
         configureCollectionView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    override var inputAccessoryView: UIView? {
+        get {return commentView}
+    }
+    
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
     func configureCollectionView(){
         title = "Comments"
         collectionView.backgroundColor = .systemBackground
         collectionView.register(CommentCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.alwaysBounceVertical = true
+        collectionView.keyboardDismissMode = .interactive
     }
 
 
@@ -35,11 +60,11 @@ class CommentsController: UICollectionViewController {
 extension CommentsController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 10
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CommentCell
         return cell
     }
 }
