@@ -89,6 +89,5 @@ extension CommentsController: UICollectionViewDelegateFlowLayout {
 extension CommentsController: CommentInputViewDelegate {
     func inputVIew(_ view: CommentInputView, comment: String) {
         view.clearTextAfterPost()
-    
     }
 }
