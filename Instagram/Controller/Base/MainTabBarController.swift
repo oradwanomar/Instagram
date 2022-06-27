@@ -54,6 +54,7 @@ class MainTabBarController : UITabBarController {
     func didFinishPick(_ picker:YPImagePicker){
         picker.didFinishPicking { items, cancelled in
             picker.dismiss(animated: true) {
+                
                 guard let selectedImage = items.singlePhoto?.image else {return}
                 debugPrint(selectedImage)
                 let uploadVC = UploadPostViewController()
