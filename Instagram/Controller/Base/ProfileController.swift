@@ -36,7 +36,7 @@ class ProfileController : UICollectionViewController {
     
     // MARK: Call API
     
-    func fetchUserPostsFromAPI(){ 
+    func fetchUserPostsFromAPI(){
         PostService.fetchUserPosts(uid: user.uid) { posts in
             self.posts = posts
             self.collectionView.reloadData()
