@@ -179,9 +179,7 @@ class ProfileHeader : UICollectionReusableView{
     }
     
     @objc func handleEditProfileFollowTap(){
-        guard let phViewModel = phViewModel else {
-            return
-        }
+        guard let phViewModel = phViewModel else {return}
         delegate?.header(self, didTapActionButtonForUser: phViewModel.user)
     }
 }
