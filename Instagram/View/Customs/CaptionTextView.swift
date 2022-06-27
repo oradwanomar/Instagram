@@ -15,7 +15,7 @@ class CaptionTextView : UITextView {
         }
     }
     
-    private let placeholder : UILabel = {
+    let placeholder : UILabel = {
         let ph = UILabel()
         ph.textColor = .lightGray
         return ph

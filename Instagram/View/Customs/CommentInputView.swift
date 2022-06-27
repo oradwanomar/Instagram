@@ -7,9 +7,15 @@
 
 import UIKit
 
+protocol CommentInputViewDelegate: AnyObject {
+    func inputVIew(_ view:CommentInputView,comment: String)
+}
+
 class CommentInputView: UIView {
     
     //MARK: Properities
+    
+    weak var delegate: CommentInputViewDelegate?
     
     private let commentTextView: CaptionTextView = {
         let tv = CaptionTextView()
@@ -57,7 +63,12 @@ class CommentInputView: UIView {
     }
     
     @objc func handlePostComment(){
-        
+        self.delegate?.inputVIew(self, comment: commentTextView.text)
+    }
+    
+    func clearTextAfterPost(){
+        commentTextView.text = nil
+        commentTextView.placeholder.isHidden = false
     }
     
     override var intrinsicContentSize: CGSize {
