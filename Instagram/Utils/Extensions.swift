@@ -41,7 +41,6 @@ extension UIViewController {
 extension UIButton {
     func attributedTitle(firstPart: String, secondPart: String) {
         let atts: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.87), .font: UIFont.systemFont(ofSize: 15)]
-        
         let attributedTitle = NSMutableAttributedString(string: "\(firstPart) ", attributes: atts)
         
         let boldAtts: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.9), .font: UIFont.boldSystemFont(ofSize: 16)]
