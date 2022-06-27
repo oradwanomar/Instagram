@@ -23,7 +23,6 @@ class CommentInputView: UIView {
         tv.placeholderText = "Add a comment.."
         tv.font = UIFont.systemFont(ofSize: 15)
         tv.placeholderShouldCenter = true
-        
         return tv
     }()
     
