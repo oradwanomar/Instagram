@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 
 class ProfileViewModel {
@@ -59,13 +60,15 @@ class ProfileViewModel {
     }
     
     func fetchUserFromAPI(){
-        UserService.fetchUser { user in
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        UserService.fetchUser(forUserID: uid) { user in
                 self.user = user
         }
     }
     
     func fetchUserWithCompletion(completion:@escaping (User)->Void){
-        UserService.fetchUser { user in
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        UserService.fetchUser(forUserID: uid) { user in
             self.user = user
             completion(user)
         }

@@ -48,7 +48,9 @@ class CommentCell: UICollectionViewCell {
         userProfileImage.centerY(inView: self,leftAnchor: leftAnchor,paddingLeft: 8)
         userProfileImage.setDimensions(height: 40, width: 40)
         
+        commentLabel.numberOfLines = 0
         commentLabel.centerY(inView: self,leftAnchor: userProfileImage.rightAnchor,paddingLeft: 8)
+        commentLabel.anchor(right: rightAnchor,paddingRight: 8)
     }
     
     func configureCommentVM(){

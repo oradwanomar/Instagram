@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 class CommentsViewModel {
@@ -27,5 +28,13 @@ class CommentsViewModel {
         self.comment = comment
     }
     
+    func size(forWidth width: CGFloat) -> CGSize {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.text = commentText
+        label.lineBreakMode = .byCharWrapping
+        label.setWidth(width)
+        return label.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+    }
     
 }

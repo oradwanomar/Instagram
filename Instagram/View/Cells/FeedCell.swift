@@ -10,6 +10,7 @@ import SDWebImage
 
 protocol FeedCellDelegate: AnyObject{
     func cell(for cell: FeedCell,wantsToShowCommentsFor post: Post)
+    func tabUsername(for cell: FeedCell,wantsToShowCommentsFor post: Post)
 }
 
 class FeedCell : UICollectionViewCell {
@@ -51,14 +52,14 @@ class FeedCell : UICollectionViewCell {
     
     private lazy var likeButton : UIButton = {
         let btn = UIButton(type: .system)
-        btn.setImage(UIImage(named: "like_unselected") , for: .normal)
+        btn.setImage(UIImage(named: "like_unselected")?.withTintColor(.label, renderingMode: .alwaysOriginal) , for: .normal)
         btn.tintColor = .black
         return btn
     }()
     
     private lazy var commentButton : UIButton = {
         let btn = UIButton(type: .system)
-        btn.setImage(UIImage(named: "comment") , for: .normal)
+        btn.setImage(UIImage(named: "comment")?.withTintColor(.label, renderingMode: .alwaysOriginal) , for: .normal)
         btn.tintColor = .black
         btn.addTarget(self, action: #selector(didTapComment), for: .touchUpInside)
         return btn
@@ -66,7 +67,7 @@ class FeedCell : UICollectionViewCell {
     
     private lazy var shareButton : UIButton = {
         let btn = UIButton(type: .system)
-        btn.setImage(UIImage(named: "send2") , for: .normal)
+        btn.setImage(UIImage(named: "send2")?.withTintColor(.label, renderingMode: .alwaysOriginal) , for: .normal)
         btn.tintColor = .black
         return btn
     }()
@@ -163,5 +164,8 @@ class FeedCell : UICollectionViewCell {
         
     }
     
-    @objc func didTapUsername(){}
+    @objc func didTapUsername(){
+        guard let viewModel = viewModel else {return}
+        self.delegate?.tabUsername(for: self, wantsToShowCommentsFor: viewModel.post)
+    }
 }

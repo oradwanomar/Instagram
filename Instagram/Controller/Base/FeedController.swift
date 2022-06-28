@@ -43,8 +43,7 @@ class FeedController : UICollectionViewController {
     
     func setUPNavBar(){
         if profilePosts.count == 0 {
-            let logo = UIImage(named: "logo")
-            logo?.withTintColor(.label, renderingMode: .alwaysTemplate)
+            let logo = UIImage(named: "logo")?.withTintColor(.label, renderingMode: .alwaysOriginal)
             let imageView = UIImageView(image:logo)
             imageView.contentMode = .scaleAspectFit
             self.navigationItem.titleView = imageView
@@ -52,6 +51,7 @@ class FeedController : UICollectionViewController {
             let messageButton = UIButton(type: .system)
             messageButton.setImage(UIImage(named: "message")?.withRenderingMode(.alwaysOriginal), for: .normal)
             messageButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+            messageButton.addTarget(self, action: #selector(didTabMessageBtn), for: .touchUpInside)
             navigationItem.rightBarButtonItem = UIBarButtonItem(customView: messageButton)
             
             let logOutButton = UIButton(type: .system)
@@ -88,6 +88,7 @@ class FeedController : UICollectionViewController {
         }
     }
     
+    // MARK: Obj-C Functions
     
     @objc func didPullToRefresh(){
         posts.removeLast()
@@ -106,6 +107,13 @@ class FeedController : UICollectionViewController {
                 }
         } catch {
             print("Error : in logout")
+        }
+    }
+    
+    @objc func didTabMessageBtn(){
+        DispatchQueue.main.async {
+            let indexPath = IndexPath(row: 0, section: 0)
+            self.collectionView.scrollToItem(at: indexPath, at: .top, animated: true)
         }
     }
     
@@ -145,6 +153,13 @@ extension FeedController : UICollectionViewDelegateFlowLayout{
 // MARK: FeedCellDelegate
 
 extension FeedController: FeedCellDelegate{
+    func tabUsername(for cell: FeedCell, wantsToShowCommentsFor post: Post) {
+        UserService.fetchUser(forUserID: post.ownerUid) { user in
+            let pVC = ProfileController(user: user)
+            self.navigationController?.pushViewController(pVC, animated: true)
+        }
+    }
+    
     func cell(for cell: FeedCell, wantsToShowCommentsFor post: Post) {
         let commentVC = CommentsController(post: post)
         navigationController?.pushViewController(commentVC, animated: true)

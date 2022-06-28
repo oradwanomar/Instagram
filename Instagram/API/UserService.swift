@@ -9,8 +9,7 @@ import Firebase
 
 class UserService {
     
-    static func fetchUser(comletion:@escaping (User)->Void){
-        guard let uid = Auth.auth().currentUser?.uid else {return}
+    static func fetchUser(forUserID uid: String,comletion:@escaping (User)->Void){
         COLLECTION_USERS.document(uid).getDocument { snapshot, error in
             guard let userDic = snapshot?.data() else {return}
             let user = User(dictionary: userDic)

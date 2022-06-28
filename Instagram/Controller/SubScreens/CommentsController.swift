@@ -97,6 +97,13 @@ extension CommentsController {
 // MARK: UICollectionViewDelegate
 
 extension CommentsController {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let uid = comments[indexPath.row].uid
+        UserService.fetchUser(forUserID: uid) { user in
+            let profileVC = ProfileController(user: user)
+            self.navigationController?.pushViewController(profileVC, animated: true)
+        }
+    }
     
 }
 
@@ -104,7 +111,9 @@ extension CommentsController {
 
 extension CommentsController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 80)
+        let viewModel = CommentsViewModel(comment: comments[indexPath.row])
+        let height = viewModel.size(forWidth: view.frame.width).height + 32
+        return CGSize(width: view.frame.width, height: height)
     }
 }
 
