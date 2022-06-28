@@ -13,6 +13,8 @@ class CommentsController: UICollectionViewController {
     
     //MARK: properities
     
+    private let post: Post
+    
     private lazy var commentView: CommentInputView = {
         let frame  = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
         let cv = CommentInputView(frame: frame)
@@ -21,7 +23,16 @@ class CommentsController: UICollectionViewController {
     }()
     
     //MARK: lifeCycle
-
+    
+    init(post: Post) {
+        self.post = post
+        super.init(collectionViewLayout: UICollectionViewFlowLayout())
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
@@ -88,6 +99,16 @@ extension CommentsController: UICollectionViewDelegateFlowLayout {
 
 extension CommentsController: CommentInputViewDelegate {
     func inputVIew(_ view: CommentInputView, comment: String) {
-        view.clearTextAfterPost()
+        
+        guard let tabBar = self.tabBarController as? MainTabBarController else {return}
+        
+        guard let user = tabBar.user else {return}
+        
+        showLoader(true)
+        
+        CommentsService.uploadComment(comment: comment, postID: post.postId, user: user) { error in
+            self.showLoader(false)
+            view.clearTextAfterPost()
+        }
     }
 }

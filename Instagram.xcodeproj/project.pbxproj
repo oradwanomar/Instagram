@@ -13,6 +13,7 @@
 		8518419128680D210009E73C /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8518419028680D210009E73C /* CommentCell.swift */; };
 		8518419328681BA50009E73C /* CommentInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8518419228681BA50009E73C /* CommentInputView.swift */; };
 		85210568286AAC5F00CF6F4F /* CommentsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85210567286AAC5F00CF6F4F /* CommentsService.swift */; };
+		8521056A286AB0ED00CF6F4F /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85210569286AB0ED00CF6F4F /* Comment.swift */; };
 		85286B3A28394FBB007515CF /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85286B3928394FBB007515CF /* CustomTextField.swift */; };
 		85286B3C2839999B007515CF /* CustomAuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85286B3B2839999B007515CF /* CustomAuthButton.swift */; };
 		85286B3E2839B2B2007515CF /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85286B3D2839B2B2007515CF /* AuthViewModel.swift */; };
@@ -84,6 +85,7 @@
 		8518419028680D210009E73C /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		8518419228681BA50009E73C /* CommentInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentInputView.swift; sourceTree = "<group>"; };
 		85210567286AAC5F00CF6F4F /* CommentsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsService.swift; sourceTree = "<group>"; };
+		85210569286AB0ED00CF6F4F /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		85286B3928394FBB007515CF /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		85286B3B2839999B007515CF /* CustomAuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAuthButton.swift; sourceTree = "<group>"; };
 		85286B3D2839B2B2007515CF /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				85A5688028448FD8004F50BF /* User.swift */,
 				85A5688428449668004F50BF /* AuthCredentials.swift */,
 				85C745EC285EE09300F1FB5D /* Post.swift */,
+				85210569286AB0ED00CF6F4F /* Comment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -511,6 +514,7 @@
 				85B14A5A284358F5002C1D3A /* ProfileHeader.swift in Sources */,
 				85A5688128448FD8004F50BF /* User.swift in Sources */,
 				85C8F6CD2835CC0A00EE6E77 /* ImageSelectorController.swift in Sources */,
+				8521056A286AB0ED00CF6F4F /* Comment.swift in Sources */,
 				8511BDFD2845E81A00157CC3 /* UserCell.swift in Sources */,
 				85C8F6CF2835CC1D00EE6E77 /* NotificationController.swift in Sources */,
 				85C8F6CB2835CBF500EE6E77 /* SearchController.swift in Sources */,
