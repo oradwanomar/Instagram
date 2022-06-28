@@ -34,8 +34,8 @@ struct CommentsService {
                     comments.append(comment)
                 }
             })
+            completion(comments)
         }
-        completion(comments)
     }
     
     

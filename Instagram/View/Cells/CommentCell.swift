@@ -11,6 +11,12 @@ class CommentCell: UICollectionViewCell {
     
     //MARK: Properities
     
+    var commentViewModel: CommentsViewModel? {
+        didSet {
+            configureCommentVM()
+        }
+    }
+    
     private let userProfileImage: UIImageView = {
         let pImg = UIImageView()
         pImg.backgroundColor = .lightGray
@@ -20,13 +26,7 @@ class CommentCell: UICollectionViewCell {
         return pImg
     }()
     
-    private let commentLabel: UILabel = {
-        let lb = UILabel()
-        let attributedString = NSMutableAttributedString(string: "Omar ", attributes: [.font:UIFont.boldSystemFont(ofSize: 14),.foregroundColor: UIColor.label])
-        attributedString.append(NSAttributedString(string: "Hello from the other side ", attributes: [.font:UIFont.systemFont(ofSize: 13),.foregroundColor: UIColor.label]))
-        lb.attributedText = attributedString
-        return lb
-    }()
+    private let commentLabel = UILabel()
     
     
     
@@ -49,6 +49,18 @@ class CommentCell: UICollectionViewCell {
         userProfileImage.setDimensions(height: 40, width: 40)
         
         commentLabel.centerY(inView: self,leftAnchor: userProfileImage.rightAnchor,paddingLeft: 8)
+    }
+    
+    func configureCommentVM(){
+        guard let commentViewModel = commentViewModel else { return }
+        userProfileImage.sd_setImage(with: commentViewModel.userProfileImgUrl)
+        commentLabel.attributedText = commentLabelText(username: commentViewModel.commentUsername, commentLabel: commentViewModel.commentText)
+    }
+    
+    func commentLabelText(username: String,commentLabel: String)-> NSAttributedString {
+        let attributedString = NSMutableAttributedString(string: "\(username) ", attributes: [.font:UIFont.boldSystemFont(ofSize: 14),.foregroundColor: UIColor.label])
+        attributedString.append(NSAttributedString(string: "\(commentLabel)", attributes: [.font:UIFont.systemFont(ofSize: 13),.foregroundColor: UIColor.label]))
+        return attributedString
     }
     
     required init?(coder: NSCoder) {

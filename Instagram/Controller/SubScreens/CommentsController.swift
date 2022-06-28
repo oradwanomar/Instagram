@@ -37,6 +37,7 @@ class CommentsController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
+        fetchComments()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,6 +72,7 @@ class CommentsController: UICollectionViewController {
     func fetchComments(){
         CommentsService.fetchComments(forPost: post.postId) { comments in
             self.comments = comments
+            self.collectionView.reloadData()
         }
     }
 
@@ -87,6 +89,7 @@ extension CommentsController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CommentCell
+        cell.commentViewModel = CommentsViewModel(comment: comments[indexPath.row])
         return cell
     }
 }
