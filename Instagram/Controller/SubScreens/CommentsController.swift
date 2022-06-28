@@ -14,6 +14,7 @@ class CommentsController: UICollectionViewController {
     //MARK: properities
     
     private let post: Post
+    var comments: [Comment] = []
     
     private lazy var commentView: CommentInputView = {
         let frame  = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
@@ -56,12 +57,21 @@ class CommentsController: UICollectionViewController {
         return true
     }
     
+    
+    // MARK: Helper Functions
+    
     func configureCollectionView(){
         title = "Comments"
         collectionView.backgroundColor = .systemBackground
         collectionView.register(CommentCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         collectionView.alwaysBounceVertical = true
         collectionView.keyboardDismissMode = .interactive
+    }
+    
+    func fetchComments(){
+        CommentsService.fetchComments(forPost: post.postId) { comments in
+            self.comments = comments
+        }
     }
 
 
@@ -72,7 +82,7 @@ class CommentsController: UICollectionViewController {
 extension CommentsController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return comments.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
