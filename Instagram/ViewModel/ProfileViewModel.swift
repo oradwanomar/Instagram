@@ -48,7 +48,6 @@ class ProfileViewModel {
 //        return user.isFollowed ? .systemBackground : .systemBlue
 //    }
     
-    
     init() {
         self.fetchUserWithCompletion { user in
             self.user = user
