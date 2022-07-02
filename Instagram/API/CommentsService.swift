@@ -17,7 +17,6 @@ struct CommentsService {
                                   "username": user.username,
                                   "profileImageUrl": user.profileImageUrl
         ]
-        
         COLLECTION_POSTS.document(postID).collection("comments").addDocument(data: data, completion: completion)
         
     }
