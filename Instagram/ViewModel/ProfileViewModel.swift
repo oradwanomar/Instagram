@@ -40,7 +40,6 @@ class ProfileViewModel {
         return user.isFollowed ? "Following" : "Follow"
     }
     
-    
 //    var followButtonBackgroundColor : UIColor {
 //        if user.isCurrentUser {
 //            return .systemBackground
