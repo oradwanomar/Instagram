@@ -60,7 +60,7 @@ class CommentCell: UICollectionViewCell {
     }
     
     func commentLabelText(username: String,commentLabel: String)-> NSAttributedString {
-        let attributedString = NSMutableAttributedString(string: "\(username) ", attributes: [.font:UIFont.boldSystemFont(ofSize: 16),.foregroundColor: UIColor.label])
+        let attributedString = NSMutableAttributedString(string: "\(username) ", attributes: [.font:UIFont.boldSystemFont(ofSize: 15),.foregroundColor: UIColor.label])
         attributedString.append(NSAttributedString(string: "\(commentLabel)", attributes: [.font:UIFont.systemFont(ofSize: 13),.foregroundColor: UIColor.label]))
         return attributedString
     }
