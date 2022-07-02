@@ -116,7 +116,7 @@ class FeedController : UICollectionViewController {
             self.collectionView.scrollToItem(at: indexPath, at: .top, animated: true)
         }
     }
-    
+
     
 }
 
