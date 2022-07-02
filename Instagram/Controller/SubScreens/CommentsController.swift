@@ -112,7 +112,7 @@ extension CommentsController {
 extension CommentsController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let viewModel = CommentsViewModel(comment: comments[indexPath.row])
-        let height = viewModel.size(forWidth: view.frame.width).height + 30h
+        let height = viewModel.size(forWidth: view.frame.width).height + 32
         return CGSize(width: view.frame.width, height: height)
     }
 }
