@@ -15,4 +15,5 @@ class PostsViewModel {
     init(post:Post) {
         self.post = post
     }
+    
 }
