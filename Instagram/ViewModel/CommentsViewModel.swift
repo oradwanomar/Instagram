@@ -20,7 +20,6 @@ class CommentsViewModel {
         return comment.username
     }
     
-    
     var userProfileImgUrl: URL? {
         return URL(string: comment.profileImageUrl)
     }
