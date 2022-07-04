@@ -10,7 +10,7 @@ import UIKit
 
 class PostsViewModel {
     
-    let post: Post    
+    var post: Post    
     
     init(post:Post) {
         self.post = post

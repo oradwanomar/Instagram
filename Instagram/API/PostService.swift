@@ -47,4 +47,27 @@ struct PostService {
         }
     }
     
+    static func likePost(post: Post,completion: @escaping (Error?)->Void){
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        
+        COLLECTION_POSTS.document(post.postId).updateData(["Likes" : post.likes + 1])
+        
+        COLLECTION_POSTS.document(post.postId).collection("post-Likes").document(uid).setData([:]) { _ in
+            
+            COLLECTION_USERS.document(uid).collection("user-Likes").document(post.postId).setData([:], completion: completion)
+        }
+    }
+    
+    static func unlikePost(post: Post,completion: @escaping (Error?)->Void){
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        
+        COLLECTION_POSTS.document(post.postId).updateData(["Likes" : post.likes - 1])
+        
+        COLLECTION_POSTS.document(post.postId).collection("post-Likes").document(uid).delete { _ in
+            
+            COLLECTION_USERS.document(uid).collection("user-Likes").document(post.postId).delete(completion: completion)
+
+        }
+    }
+    
 }

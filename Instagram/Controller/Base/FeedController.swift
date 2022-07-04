@@ -164,4 +164,18 @@ extension FeedController: FeedCellDelegate{
         let commentVC = CommentsController(post: post)
         navigationController?.pushViewController(commentVC, animated: true)
     }
+    
+    func cell(for cell: FeedCell,wantsToLikeFor post: Post){
+        cell.viewModel?.post.isLiked.toggle()
+        
+        if post.isLiked{
+            PostService.unlikePost(post: post) { ـ in
+                
+            }
+        }else{
+            PostService.likePost(post: post) { _ in
+                
+            }
+        }
+    }
 }

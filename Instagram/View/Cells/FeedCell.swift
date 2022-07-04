@@ -10,6 +10,7 @@ import SDWebImage
 
 protocol FeedCellDelegate: AnyObject{
     func cell(for cell: FeedCell,wantsToShowCommentsFor post: Post)
+    func cell(for cell: FeedCell,wantsToLikeFor post: Post)
     func tabUsername(for cell: FeedCell,wantsToShowCommentsFor post: Post)
 }
 
@@ -54,6 +55,7 @@ class FeedCell : UICollectionViewCell {
         let btn = UIButton(type: .system)
         btn.setImage(UIImage(named: "like_unselected")?.withTintColor(.label, renderingMode: .alwaysOriginal) , for: .normal)
         btn.tintColor = .black
+        btn.addTarget(self, action: #selector(didTapLike), for: .touchUpInside)
         return btn
     }()
     
@@ -104,8 +106,6 @@ class FeedCell : UICollectionViewCell {
     
     // MARK: Lifecycle
     
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpCell()
@@ -117,6 +117,11 @@ class FeedCell : UICollectionViewCell {
     }
     
     // MARK: Helper
+    
+    @objc func didTapLike(){
+        guard let viewModel = viewModel else {return}
+        self.delegate?.cell(for: self, wantsToLikeFor: viewModel.post)
+    }
     
     @objc func didTapComment(){
         guard let viewModel = viewModel else {return}
