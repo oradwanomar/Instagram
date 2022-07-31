@@ -173,7 +173,6 @@ extension FeedController: FeedCellDelegate{
                 
             }
         }else{
-            
             PostService.likePost(post: post) { _ in
                 
             }
