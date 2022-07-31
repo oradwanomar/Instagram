@@ -172,7 +172,7 @@ extension FeedController: FeedCellDelegate{
             PostService.unlikePost(post: post) { ـ in
                 
             }
-        }else{
+        }else{    
             PostService.likePost(post: post) { _ in
                 
             }
