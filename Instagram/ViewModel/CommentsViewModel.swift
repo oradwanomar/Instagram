@@ -34,7 +34,6 @@ class CommentsViewModel {
         label.text = commentText
         label.lineBreakMode = .byCharWrapping
         label.setWidth(width)
-        
         return label.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
     }
     
