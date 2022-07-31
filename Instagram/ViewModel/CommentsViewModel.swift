@@ -29,7 +29,7 @@ class CommentsViewModel {
     }
     
     func size(forWidth width: CGFloat) -> CGSize {
-        let label = UILabel()
+        let label = UILabel() 
         label.numberOfLines = 0
         label.text = commentText
         label.lineBreakMode = .byCharWrapping
